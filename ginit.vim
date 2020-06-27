@@ -1,0 +1,1 @@
+call GuiWindowFullScreen(1)
