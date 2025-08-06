@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='D:/programming/my-projects/discord-clone/src/components/ChannelData'
-let g:netrw_dirhist_3='D:/programming/my-projects/discord-clone/src/components/ChannelMessage'
-let g:netrw_dirhist_2='D:/programming/my-projects/discord-clone/src/components/ChannelData'
-let g:netrw_dirhist_1='C:\Users\Pedro\AppData\local\nvim'
