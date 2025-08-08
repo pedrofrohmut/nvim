@@ -220,7 +220,10 @@ local f = require("my.utils.string-functions")
 map("n", "<leader>st", f.remove_trailing)
 
 -- Change word case
-map("n", "<leader>u", "g~iw")
+map("n", "<leader>su", "g~iw")      -- upcase inner word
+map("n", "<leader>sU", "g~iW")      -- upcase inner big word
+map("n", "<leader>sl", "i_<Esc>l~") -- Camel Case to Snake Case
+map("n", "<leader>sh", "dl~l")      -- Snake Case to Camel Case
 
 -- Terminal Mode ---------------------------------------------------------------
 
