@@ -4,7 +4,7 @@ require("nvim-treesitter.configs").setup({
         -- Main required always for neovim
         "c", "lua", "vim", "vimdoc", "query",
         -- Extra my choices
-        "java", "c_sharp"
+        "java", "c_sharp", "python",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)

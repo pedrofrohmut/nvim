@@ -46,17 +46,17 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 
-map("n", "<leader>ff", builtin.find_files)
-map("n", "<leader>fg", builtin.live_grep)
-map("n", "<leader>fb", builtin.buffers)
-map("n", "<leader>fh", builtin.help_tags)
-map("n", "<leader>fk", builtin.keymaps)
-map("n", "<leader>fr", builtin.registers)
+map("n", "<leader>ff", builtin.find_files, { desc = "Telescope Find Files" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope Live Grep" })
+map("n", "<leader>fb", builtin.buffers, { desc = "Telescope Buffers" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Help" })
+map("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Keymaps" })
+map("n", "<leader>fr", builtin.registers, { desc = "Telescope Registers" })
 
 -- Find files with hidden and gitignored
 map("n", "<leader>fa", function()
     builtin.find_files({ no_ignore = true, hidden = true })
-end)
+end, { desc = "Telescope Find Files (no_ignore, no_hidden)" })
 
 local grep_search = function()
     local ok_grep, err = pcall(function()
@@ -70,10 +70,10 @@ local grep_search = function()
     vim.cmd.echo("''")
 end
 
-map("n", "<leader>fs", grep_search)
+map("n", "<leader>fs", grep_search, { desc = "Telescope Grep" })
 -- map("n", "<C-s>", grep_search)
 
-map("n", "<C-f>", builtin.current_buffer_fuzzy_find)
+map("n", "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
 
 local no_preview_dropdown = themes.get_dropdown({
     previewer = false,
@@ -82,11 +82,11 @@ local no_preview_dropdown = themes.get_dropdown({
 
 map("n", "<C-q>", function()
     builtin.find_files(no_preview_dropdown)
-end)
+end, { desc = "Telescope Find Files (No Preview)" })
 
 map("n", "<C-b>", function()
     builtin.buffers(no_preview_dropdown)
-end)
+end, { desc = "Telescope Buffers (No Preview)" })
 
 -- LSP Mappings
 -- vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions)
@@ -94,8 +94,7 @@ end)
 -- vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
 -- vim.keymap.set("n", "<leader>gt", builtin.lsp_type_definitions)
 
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
-vim.keymap.set("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols)
-
-vim.keymap.set("n", "<leader>sd", builtin.lsp_document_symbols)
-vim.keymap.set("n", "<leader>sw", builtin.lsp_workspace_symbols)
+vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find Diagnostics" })
+vim.keymap.set("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
+vim.keymap.set("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+vim.keymap.set("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })

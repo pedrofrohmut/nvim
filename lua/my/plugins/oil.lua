@@ -50,4 +50,4 @@ oil.setup({
     keymaps = oil_keymaps,
 })
 
-vim.keymap.set("n", "<leader>fo", vim.cmd.Oil)
+vim.keymap.set("n", "<leader>fo", vim.cmd.Oil, { desc = "Oil" })

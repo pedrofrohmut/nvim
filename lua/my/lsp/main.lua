@@ -12,17 +12,35 @@ vim.diagnostic.config({
 
 -- Mappings --------------------------------------------------------------------
 
+-- DEFAULTS                                              *diagnostic-defaults*
+--
+-- These diagnostic keymaps are created unconditionally when Nvim starts:
+-- - `]d` jumps to the next diagnostic in the buffer. |]d-default|
+-- - `[d` jumps to the previous diagnostic in the buffer. |[d-default|
+-- - `]D` jumps to the last diagnostic in the buffer. |]D-default|
+-- - `[D` jumps to the first diagnostic in the buffer. |[D-default|
+-- - `<C-w>d` shows diagnostic at cursor in a floating window. |CTRL-W_d-default|
+
+-- LSP
 map("n", "<F11>", function()
     vim.cmd.LspRestart()
     vim.cmd.echo("'Lsp Restarted'")
-end)
-map("n", "<F12>", vim.cmd.LspInfo, { silent = true })
-map("n", "[d", vim.diagnostic.goto_prev, { silent = true })
-map("n", "]d", vim.diagnostic.goto_next, { silent = true })
-map("n", "<leader>cdo", vim.diagnostic.open_float, { silent = true })
-map("n", "<leader>cdl", vim.diagnostic.setloclist, { silent = true })
-map("n", "<leader>cdd", vim.diagnostic.disable, { silent = true })
-map("n", "<leader>cde", vim.diagnostic.enable, { silent = true })
+end, { desc = "Restart Lsp" })
+map("n", "<F12>", vim.cmd.LspInfo, { silent = true }, { desc = "Lsp Info" })
+
+-- Diagnostic
+map("n", "<leader>cdd", function() vim.diagnostic.enable(false) end,
+    { silent = true }, { desc = "Disable Diagnostics" })
+map("n", "<leader>cde", function() vim.diagnostic.enable(true) end,
+    { silent = true }, { desc = "Enable Diagnostics" })
+
+-- OLD
+-- map("n", "[d", vim.diagnostic.goto_prev, { silent = true })
+-- map("n", "]d", vim.diagnostic.goto_next, { silent = true })
+-- map("n", "<leader>cdo", vim.diagnostic.open_float, { silent = true })
+-- map("n", "<leader>cdl", vim.diagnostic.setloclist, { silent = true })
+-- map("n", "<leader>cdd", vim.diagnostic.disable, { silent = true })
+-- map("n", "<leader>cde", vim.diagnostic.enable, { silent = true })
 
 -- LspAttach -------------------------------------------------------------------
 
@@ -37,6 +55,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
+
+        -- DEFAULTS                                                *lsp-defaults*
+        --
+        -- These GLOBAL keymaps are created unconditionally when Nvim starts:
+        -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
+        -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
+        -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
+        -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
+        -- - "grt" is mapped in Normal mode to |vim.lsp.buf.type_definition()|
+        -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
+        -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
 
         local telescope = require("telescope.builtin")
         map("n", "gd", telescope.lsp_definitions, opts)

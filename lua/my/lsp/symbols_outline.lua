@@ -1,8 +1,6 @@
-require("outline").setup({
-    -- Your setup opts here (leave empty to use defaults)
-})
+require("outline").setup({})
 
-vim.keymap.set("n", "<leader>ts", vim.cmd.Outline)
+vim.keymap.set("n", "<leader>ts", vim.cmd.Outline, { desc = "Toggle Outline Symbols" })
 
 --require("symbols-outline").setup({
 --      position = "right",
