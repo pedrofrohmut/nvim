@@ -10,11 +10,7 @@
 local map = vim.keymap.set
 
 -- Unsetters: Do nothing to remove unwanted default behavior
-map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-map("i", "<C-j>", "<Nop>")
 map("n", "R", "<Nop>") -- Disable WTF mode
-map({ "n", "v", "i" }, "<C-Space>", "<Nop>", { silent = true })
-map("n", "<C-Enter>", "<Nop>")
 
 -- Indent
 map({ "n", "v" }, "<Space><Space>", "=")
@@ -22,10 +18,6 @@ map({ "n", "v" }, "<Space><Space>", "=")
 -- Function Keys
 map("n", "<F1>", ":vertical help ")
 map("n", "<F2>", ":verbose map ")
-
--- File Explorer
---map("n", "<leader>fe", vim.cmd.Explore)
---map("n", "<leader>fp", ":find *")
 
 -- Easy Register Copy/Cut to/from System Clipboard (:checkhealth if not working)
 map("v", "<leader>sy", '"+y')
@@ -35,9 +27,6 @@ map("n", "<leader>sp", '"+p')
 -- Do not override current register on v_paste
 map("v", "p", [["_dP]])
 
--- Fix C-i so you can keymap Tab Key
---map("n", "<C-i>", "<C-i>")
-
 -- Redo on better keymapping
 map("n", "U", "<C-r>")
 
@@ -45,18 +34,13 @@ map("n", "U", "<C-r>")
 map("n", "<C-c>", "<cmd>set cmdheight=1<Enter><cmd>echo ''<Enter>")
 map("n", "<Esc>", "<cmd>set cmdheight=1<Enter><cmd>echo ''<Enter>")
 
--- Delete in insert mode
+-- Delete in insert and command mode
 map({ "i", "c" }, "<C-l>", "<Del>")
 map({ "i", "c" }, "<C-h>", "<BS>")
 
--- Insert lines/spaces in Normal Mode
-map("n", "<Enter>", "i<Enter><Esc>")
-
--- Normal Enter/CR when needed
-map("n", "<A-Enter>", "<CR>")
-
--- Insert spaces in normal mode
-map("n", "<C-Space>", "i<Space><Esc>l")
+-- Insert lines in Normal Mode
+map("n", "<Enter>", ":normal [ <CR>")
+map("n", "<C-Enter>", ":normal ] <CR>")
 
 -- Insert ; at line end (Lazy nerd)
 map("n", "<leader>;", "mzA;<Esc>`z")
@@ -99,7 +83,7 @@ map("i", "[<CR>", "[<CR>]<Esc>ko")
 map("i", "[[<CR>", "[[<CR>]]<Esc>ko")
 map("i", "{<CR>", "{<CR>}<Esc>ko")
 map("i", "({<CR>", "({<CR>})<Esc>ko")
-map("i", "`<CR>", "<CR>`<Esc>ko<Tab>")
+map("i", "`<CR>", "`<CR>`<Esc>ko<Tab>")
 map("i", "(`<CR>", "(``)<Esc>hi<CR><Esc>ko<Tab>")
 
 -- Add spaces inside closing character (lacking in autopairs plugin)
@@ -136,12 +120,6 @@ map("n", "<C-p>", ":tabprevious<CR>", { silent = true })
 
 -- Windows ---------------------------------------------------------------------
 
--- Move focus between windows
--- map("n", "<C-h>", "<C-w>h")
--- map("n", "<C-j>", "<C-w>j")
--- map("n", "<C-k>", "<C-w>k")
--- map("n", "<C-l>", "<C-w>l")
-
 -- Resizing
 map("n", "<Up>", "3<C-w>+") -- Up
 map("n", "<Down>", "3<C-w>-") -- Down
@@ -151,15 +129,12 @@ map("n", "<Right>", "3<C-w><") -- Right
 -- Change current window to a new tab
 map("n", "<leader>wt", "<C-w>T")
 
--- Close other windows
--- map("n", "<A-o>", "<C-w>o")
-
 -- Closes every other window and every other tab
 map("n", "<leader>wo", function()
     vim.cmd.tabonly()
     vim.cmd.only()
     vim.cmd.echo("''")
-end)
+end, { desc = "Close other tabs and other windows" })
 
 -- Jumping/Scrolling -----------------------------------------------------------
 
@@ -174,10 +149,6 @@ map("n", "<A-e>", "2$") -- Last character of next line
 -- Scrolling Vertical
 map("n", "<C-k>", "12<C-y>")
 map("n", "<C-j>", "12<C-e>")
--- map("n", "<A-k>", "12<C-y>")
--- map("n", "<A-j>", "12<C-e>")
--- map("n", "<C-Up>", "12<C-y>")
--- map("n", "<C-Down>", "12<C-e>")
 
 -- Scrolling Vertical 2x
 map("n", "<C-d>", "28<C-e>M")
@@ -191,13 +162,8 @@ map("i", "<C-x><C-j>", "<C-o>12<C-e>")
 -- Scrolling Horizontal
 map("n", "<C-h>", "3zh")
 map("n", "<C-l>", "3zl")
--- map("n", "<A-h>", "3zh")
--- map("n", "<A-l>", "3zl")
--- map("n", "<C-Left>", "3zh")
--- map("n", "<C-Right>", "3zl")
 
 -- Center when jumping
--- map("n", "G", "Gzz")
 map("n", "`0", "`0zz")
 map("n", "'0", "'0zz")
 
@@ -220,10 +186,10 @@ local f = require("my.utils.string-functions")
 map("n", "<leader>st", f.remove_trailing)
 
 -- Change word case
-map("n", "<leader>su", "g~iw")      -- upcase inner word
-map("n", "<leader>sU", "g~iW")      -- upcase inner big word
+map("n", "<leader>su", "g~iw") -- upcase inner word
+map("n", "<leader>sU", "g~iW") -- upcase inner big word
 map("n", "<leader>sl", "i_<Esc>l~") -- Camel Case to Snake Case
-map("n", "<leader>sh", "dl~l")      -- Snake Case to Camel Case
+map("n", "<leader>sh", "dl~l") -- Snake Case to Camel Case
 
 -- Terminal Mode ---------------------------------------------------------------
 
