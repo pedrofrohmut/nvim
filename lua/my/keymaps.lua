@@ -11,6 +11,7 @@ local map = vim.keymap.set
 
 -- Unsetters: Do nothing to remove unwanted default behavior
 map("n", "R", "<Nop>") -- Disable WTF mode
+map("n", "<C-Enter>", "<Nop>") -- Disable WTF mode
 
 -- Indent
 map({ "n", "v" }, "<Space><Space>", "=")
@@ -39,8 +40,8 @@ map({ "i", "c" }, "<C-l>", "<Del>")
 map({ "i", "c" }, "<C-h>", "<BS>")
 
 -- Insert lines in Normal Mode
-map("n", "<Enter>", ":normal [ <CR>")
-map("n", "<C-Enter>", ":normal ] <CR>")
+map("n", "<Enter>", "i<Enter><Esc>")
+map("n", "<C-Space>", "i<Space><Esc>")
 
 -- Insert ; at line end (Lazy nerd)
 map("n", "<leader>;", "mzA;<Esc>`z")
