@@ -22,16 +22,16 @@ require("lspconfig").html.setup({ capabilities = default_capabilities })
 -- require("lspconfig").volar.setup({ capabilities = default_capabilities })
 
 -- Lua/Lua_LS
-require("lspconfig").lua_ls.setup({
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim", "use" },
-            },
-        },
-    },
-    capabilities = default_capabilities,
-})
+-- require("lspconfig").lua_ls.setup({
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 globals = { "vim", "use" },
+--             },
+--         },
+--     },
+--     capabilities = default_capabilities,
+-- })
 
 -- Python
 require("lspconfig").pyright.setup({ capabilities = default_capabilities })
@@ -50,7 +50,7 @@ require("lspconfig").omnisharp.setup({
 -- TODO: Config csharp with: Omnisharp-Extended-Lsp. at: https://github.com/Hoffs/omnisharp-extended-lsp.nvim
 
 -- Go with gopls
-require("lspconfig").gopls.setup({ capabilities = default_capabilities })
+-- require("lspconfig").gopls.setup({ capabilities = default_capabilities })
 
 -- Java
 vim.api.nvim_create_autocmd("FileType", {

@@ -28,6 +28,12 @@ local snip_completion = {
     },
 }
 
+local ai_completion = {
+    config = {
+        sources = cmp.config.sources({ { name = "codeium" } }),
+    },
+}
+
 cmp.setup({
     completion = {
         autocomplete = false,
@@ -51,7 +57,6 @@ cmp.setup({
                 cmp.confirm({ select = true })
             end
         end),
-        -- ["<C-k>"] = cmp.mapping.abort(),
 
         -- File path
         ["<C-f>"] = cmp.mapping(function()
@@ -60,12 +65,19 @@ cmp.setup({
             end
         end),
 
-        -- Snippets
+        -- AI (Cannot use <C-i> because tmux)
         ["<C-k>"] = cmp.mapping(function()
             if not cmp.visible() then
-                cmp.complete(snip_completion)
+                cmp.complete(ai_completion)
             else
                 cmp.abort()
+            end
+        end),
+
+        -- Snippets
+        ["<C-g>"] = cmp.mapping(function()
+            if not cmp.visible() then
+                cmp.complete(snip_completion)
             end
         end),
         ["<A-n>"] = cmp.mapping(function()

@@ -60,6 +60,9 @@ local plugins = {
         "hrsh7th/cmp-path",
     },
 
+    -- AI
+    { "Exafunction/windsurf.nvim" },
+
     -- Snippets
     {
         { "L3MON4D3/LuaSnip", version = "2.2.0" },

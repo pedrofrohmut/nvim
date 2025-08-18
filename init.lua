@@ -29,6 +29,7 @@ require("my.plugins.surround")
 require("my.plugins.telescope")
 require("my.plugins.zen_mode")
 require("my.plugins.vim_gitgutter")
+require("my.plugins.codeium")
 
 if vim.g.neovide then
     require("my.neovide")

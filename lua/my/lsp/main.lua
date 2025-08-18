@@ -29,10 +29,20 @@ end, { desc = "Restart Lsp" })
 map("n", "<F12>", vim.cmd.LspInfo, { silent = true }, { desc = "Lsp Info" })
 
 -- Diagnostic
-map("n", "<leader>cdd", function() vim.diagnostic.enable(false) end,
-    { silent = true }, { desc = "Disable Diagnostics" })
-map("n", "<leader>cde", function() vim.diagnostic.enable(true) end,
-    { silent = true }, { desc = "Enable Diagnostics" })
+map("n", "<leader>cdd", function()
+    vim.diagnostic.enable(false)
+end, { silent = true }, { desc = "Disable Diagnostics" })
+map("n", "<leader>cde", function()
+    vim.diagnostic.enable(true)
+end, { silent = true }, { desc = "Enable Diagnostics" })
+map("n", "[d", function()
+    vim.diagnostic.goto_prev()
+    vim.diagnostic.open_float()
+end, { desc = "Go To Previous Diagnostic" })
+map("n", "]d", function()
+    vim.diagnostic.goto_next()
+    vim.diagnostic.open_float()
+end, { desc = "Go To Next Diagnostic" })
 
 -- OLD
 -- map("n", "[d", vim.diagnostic.goto_prev, { silent = true })

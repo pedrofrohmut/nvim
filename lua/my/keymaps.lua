@@ -11,7 +11,7 @@ local map = vim.keymap.set
 
 -- Unsetters: Do nothing to remove unwanted default behavior
 map("n", "R", "<Nop>") -- Disable WTF mode
-map("n", "<C-Enter>", "<Nop>") -- Disable WTF mode
+map("i", "<C-i>", "<Nop>") -- Can use C-i for completions
 
 -- Indent
 map({ "n", "v" }, "<Space><Space>", "=")
@@ -31,9 +31,18 @@ map("v", "p", [["_dP]])
 -- Redo on better keymapping
 map("n", "U", "<C-r>")
 
--- Reset command-line
-map("n", "<C-c>", "<cmd>set cmdheight=1<Enter><cmd>echo ''<Enter>")
-map("n", "<Esc>", "<cmd>set cmdheight=1<Enter><cmd>echo ''<Enter>")
+-- Reset /Cleanup UI
+local cleanup = function()
+    for _, window_id in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_config(window_id).relative ~= "" then
+            vim.api.nvim_win_close(window_id, false)
+        end
+    end
+    vim.cmd("set cmdheight=1")
+    vim.cmd("echo ''")
+end
+map("n", "<C-c>", cleanup)
+map("n", "<Esc>", cleanup)
 
 -- Delete in insert and command mode
 map({ "i", "c" }, "<C-l>", "<Del>")
@@ -144,16 +153,16 @@ map({ "n", "v" }, "H", "^") -- First non-blank character
 map({ "n", "v" }, "L", "g_") -- Last non-blank character
 
 -- Emacs inspired maps
-map("n", "<A-a>", "k^") -- First character of previous line
-map("n", "<A-e>", "2$") -- Last character of next line
+map({ "n", "v" }, "<A-a>", "k^") -- First character of previous line
+map({ "n", "v" }, "<A-e>", "2$") -- Last character of next line
 
 -- Scrolling Vertical
-map("n", "<C-k>", "12<C-y>")
-map("n", "<C-j>", "12<C-e>")
+map({ "n", "v" }, "<C-k>", "12<C-y>")
+map({ "n", "v" }, "<C-j>", "12<C-e>")
 
 -- Scrolling Vertical 2x
-map("n", "<C-d>", "28<C-e>M")
-map("n", "<C-u>", "28<C-y>M")
+map({ "n", "v" }, "<C-d>", "28<C-e>M")
+map({ "n", "v" }, "<C-u>", "28<C-y>M")
 
 -- Scrolling Vertical (InsertMode)
 map("i", "<C-b>", "<C-o>zz")
@@ -161,8 +170,8 @@ map("i", "<C-x><C-k>", "<C-o>12<C-y>")
 map("i", "<C-x><C-j>", "<C-o>12<C-e>")
 
 -- Scrolling Horizontal
-map("n", "<C-h>", "3zh")
-map("n", "<C-l>", "3zl")
+map({ "n", "v" }, "<C-h>", "3zh")
+map({ "n", "v" }, "<C-l>", "3zl")
 
 -- Center when jumping
 map("n", "`0", "`0zz")
@@ -181,10 +190,15 @@ map("v", "<leader>sh", 'y<Esc>:%s/<C-r>"/')
 -- Sort
 map("v", "<leader>sp", ":sort<Enter>")
 
-local f = require("my.utils.string-functions")
-
 -- Remove trailing spaces
-map("n", "<leader>st", f.remove_trailing)
+map("n", "<leader>st", function()
+    local ok, _ = pcall(vim.cmd, [[ execute '%s/\s\+$' ]])
+    if ok then
+        print("Removed trailing white spaces")
+    else
+        print("No trailing white spaces to remove")
+    end
+end)
 
 -- Change word case
 map("n", "<leader>su", "g~iw") -- upcase inner word
