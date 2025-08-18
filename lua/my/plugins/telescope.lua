@@ -71,7 +71,6 @@ local grep_search = function()
 end
 
 map("n", "<leader>fs", grep_search, { desc = "Telescope Grep" })
--- map("n", "<C-s>", grep_search)
 
 map("n", "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
 
@@ -88,13 +87,7 @@ map("n", "<C-b>", function()
     builtin.buffers(no_preview_dropdown)
 end, { desc = "Telescope Buffers (No Preview)" })
 
--- LSP Mappings
--- vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions)
--- vim.keymap.set("n", "<leader>gy", builtin.lsp_implementations)
--- vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
--- vim.keymap.set("n", "<leader>gt", builtin.lsp_type_definitions)
-
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find Diagnostics" })
-vim.keymap.set("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
-vim.keymap.set("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
-vim.keymap.set("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })
+map("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find Diagnostics" })
+map("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
+map("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+map("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })

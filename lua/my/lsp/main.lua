@@ -32,25 +32,20 @@ map("n", "<F12>", vim.cmd.LspInfo, { silent = true }, { desc = "Lsp Info" })
 map("n", "<leader>cdd", function()
     vim.diagnostic.enable(false)
 end, { silent = true }, { desc = "Disable Diagnostics" })
+
 map("n", "<leader>cde", function()
     vim.diagnostic.enable(true)
 end, { silent = true }, { desc = "Enable Diagnostics" })
+
 map("n", "[d", function()
     vim.diagnostic.goto_prev()
-    vim.diagnostic.open_float()
+    vim.diagnostic.open_float() -- Float window is not showing automatically
 end, { desc = "Go To Previous Diagnostic" })
+
 map("n", "]d", function()
     vim.diagnostic.goto_next()
-    vim.diagnostic.open_float()
+    vim.diagnostic.open_float() -- Float window is not showing automatically
 end, { desc = "Go To Next Diagnostic" })
-
--- OLD
--- map("n", "[d", vim.diagnostic.goto_prev, { silent = true })
--- map("n", "]d", vim.diagnostic.goto_next, { silent = true })
--- map("n", "<leader>cdo", vim.diagnostic.open_float, { silent = true })
--- map("n", "<leader>cdl", vim.diagnostic.setloclist, { silent = true })
--- map("n", "<leader>cdd", vim.diagnostic.disable, { silent = true })
--- map("n", "<leader>cde", vim.diagnostic.enable, { silent = true })
 
 -- LspAttach -------------------------------------------------------------------
 
