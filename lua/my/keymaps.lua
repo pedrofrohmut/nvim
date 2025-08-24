@@ -200,6 +200,9 @@ map("n", "<leader>st", function()
     end
 end)
 
+-- Easy remove tabs
+map("n", "<leader>sy", ":%s/\t/    /g")
+
 -- Change word case
 map("n", "<leader>su", "g~iw") -- upcase inner word
 map("n", "<leader>sU", "g~iW") -- upcase inner big word
