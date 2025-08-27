@@ -88,6 +88,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         map("n", "K", vim.lsp.buf.hover, opts)
         map("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+        -- map("i", "<C-a>", vim.lsp.buf.signature_help) -- Insert mode
 
         map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
         map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)

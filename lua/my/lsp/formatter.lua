@@ -14,6 +14,7 @@ require("conform").setup({
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
+        cpp = { "clang-format" },
     },
 })
 

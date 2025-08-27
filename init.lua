@@ -17,6 +17,7 @@ require("my.lsp.mason")
 require("my.lsp.navic")
 require("my.lsp.servers")
 require("my.lsp.symbols_outline")
+require("my.lsp.custom")
 
 require("my.plugins.autopairs")
 require("my.plugins.emmet")
