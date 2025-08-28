@@ -1,7 +1,7 @@
-vim.g.NERDTreeIgnore = {
+local ignores = {
     "node_modules",
-    "obj",
-    "bin",
+    "obj$",
+    "bin$",
     "target",
     "__pycache__",
     ".git",
@@ -26,11 +26,25 @@ vim.g.NERDTreeIgnore = {
     "mvnw",
     "mvnw.cmd",
 }
+
+vim.g.NERDTreeIgnore = ignores
 vim.g.NERDTreeWinSize = 48
 vim.g.NERDTreeHijackNetrw = false
 vim.g.NERDTreeShowHidden = true
 vim.g.NERDTreeMinimalUI = true
 vim.g.NERDTreeMinimalMenu = true
+vim.g.NERDTreeShowHidden = true
 
-vim.keymap.set("n", "<leader>ft", "<cmd>NERDTreeFind<Enter><cmd>NERDTreeRefreshRoot<Enter>", { desc = "NERDTree Tree Find && Refresh" })
-vim.keymap.set("n", "<leader>tt", "<cmd>NERDTreeToggle<Enter><cmd>NERDTreeRefreshRoot<Enter>", { desc = "NERDTree Tree Toggle && Refresh" })
+vim.keymap.set(
+    "n",
+    "<leader>ft",
+    "<cmd>NERDTreeFind<Enter><cmd>NERDTreeRefreshRoot<Enter>",
+    { desc = "NERDTree Tree Find && Refresh" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>tt",
+    "<cmd>NERDTreeToggle<Enter><cmd>NERDTreeRefreshRoot<Enter>",
+    { desc = "NERDTree Tree Toggle && Refresh" }
+)

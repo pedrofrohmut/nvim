@@ -14,11 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 
 local plugins = {
-    -- Color Schemes (comment it out the one you like be not using)
+    -- Color Scheme
     { "sainnhe/sonokai" },
-    -- use "folke/tokyonight.nvim"
-    -- use "jacoborus/tender.vim"
-    -- use "mhartington/oceanic-next"
 
     -- Telescope
     {
@@ -75,14 +72,6 @@ local plugins = {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     },
-
-    -- OLD Debugging
-    -- {
-    -- "mfussenegger/nvim-dap",
-    -- "rcarriga/nvim-dap-ui",
-    -- "nvim-neotest/nvim-nio",
-    -- "theHamsta/nvim-dap-virtual-text",
-    -- },
 
     -- Symbols (Tagbar)
     { "hedyhli/outline.nvim" },
