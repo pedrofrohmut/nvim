@@ -41,8 +41,12 @@ local cleanup = function()
     vim.cmd("set cmdheight=1")
     vim.cmd("echo ''")
 end
-map("n", "<C-c>", cleanup)
+
 map("n", "<Esc>", cleanup)
+
+map("n", "<C-c>", function()
+    vim.cmd("echo ''")
+end)
 
 -- Delete in insert and command mode
 map({ "i", "c" }, "<C-l>", "<Del>")
@@ -53,11 +57,20 @@ map("n", "<Enter>", "i<Enter><Esc>")
 map("n", "<C-Space>", "i<Space><Esc>")
 
 -- Insert ; at line end (Lazy nerd)
-map("n", "<leader>;", "mzA;<Esc>`z")
+map("n", "<leader>;", "mzA;<Esc>`z", { desc = "Insert ';' at line end without moving the cursor position" })
+
+map("n", "<leader>zt", function()
+    vim.bo.expandtab = not vim.bo.expandtab
+    if vim.bo.expandtab then
+        vim.notify("Expandtab is ON. Indenting with spaces")
+    else
+        vim.notify("Expandtab is OFF.  Indenting with tabs")
+    end
+end, { desc = "Toggle 'expandtab' option" })
 
 -- Quickfix (use [q ]q to next and prev)
-map("n", "<leader>qq", vim.cmd.cclose)
-map("n", "<leader>qo", vim.cmd.copen)
+map("n", "<leader>qq", vim.cmd.cclose, { desc = "Close quickfix" })
+map("n", "<leader>qo", vim.cmd.copen, { desc = "Open quickfix" })
 
 -- Toggle wrap and linebreak
 map("n", "<leader>zl", function()
@@ -180,15 +193,12 @@ map("n", "'0", "'0zz")
 -- String Utils ----------------------------------------------------------------
 
 -- Find-Replace
-map("n", "<leader>ss", ":%s/")
-map("v", "<leader>ss", ":s/")
-
--- Find-Replace but auto-fills the with last yanked
-map("n", "<leader>sh", ':%s/<C-r>"/')
-map("v", "<leader>sh", 'y<Esc>:%s/<C-r>"/')
+map("n", "<leader>ss", ":%s/", { desc = "Find and replace for entire file" })
+map("v", "<leader>ss", ":s/", { desc = "Find and replace for selected text" })
+map("v", "<leader>sh", 'y<Esc>:%s/<C-r>"/', { desc = "Find and replace entire file that auto capture the selected text" })
 
 -- Sort
-map("v", "<leader>sp", ":sort<Enter>")
+map("v", "<leader>sp", ":sort<Enter>", { desc = "Call sorting command on selected text" })
 
 -- Remove trailing spaces
 map("n", "<leader>st", function()
@@ -198,10 +208,10 @@ map("n", "<leader>st", function()
     else
         print("No trailing white spaces to remove")
     end
-end)
+end, { desc = "Remove trailing white spaces" })
 
 -- Easy remove tabs
-map("n", "<leader>sy", ":%s/\t/    /g")
+map("n", "<leader>sy", ":%s/\t/    /g", { desc = "Changes '\t' to 4 spaces" })
 
 -- Change word case
 map("n", "<leader>su", "g~iw") -- upcase inner word

@@ -15,6 +15,7 @@ require("conform").setup({
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
         cpp = { "clang-format" },
+        go = { "goimports" },
     },
 })
 

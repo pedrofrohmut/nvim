@@ -8,7 +8,13 @@ local preview_win = function(lines)
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
     vim.api.nvim_buf_set_option(buf, "filetype", "lua") -- For syntax highlighting
 
-    local width = vim.api.nvim_get_option("columns") - 80
+    -- local width = vim.api.nvim_get_option("columns") - 80
+    -- print("Columns: " .. vim.api.nvim_get_option("columns"))
+
+    local win_lines = vim.api.nvim_get_option("lines")
+    local win_cols = vim.api.nvim_get_option("columns")
+    local width = math.floor(win_cols - (win_cols/4))
+
     local win = vim.api.nvim_open_win(buf, false, {
         -- Size
         width = width,
@@ -16,8 +22,8 @@ local preview_win = function(lines)
 
         -- Position
         relative = "editor",
-        row = vim.api.nvim_get_option("lines"),
-        col = vim.api.nvim_get_option("columns") / 2 - (width / 2), -- Classic way to calc center
+        row = win_lines,
+        col = win_cols / 2 - (width / 2), -- Classic way to calc center
 
         -- Style
         style = "minimal",
@@ -61,35 +67,6 @@ end
 
 vim.keymap.set("n", "<leader>h", persistent_signature_help, { desc = "Persistent Signature Help" })
 vim.keymap.set("i", "<C-a>", persistent_signature_help, { desc = "Persistent Signature Help" })
-
-local scroll_mode = false
-
-local function toggle_scroll_mode()
-  scroll_mode = not scroll_mode
-
-  if scroll_mode then
-    -- Enter scroll mode
-    vim.keymap.set('n', 'd', '<C-d>', { buffer = true, desc = 'Scroll down half page' })
-    vim.keymap.set('n', 'u', '<C-u>', { buffer = true, desc = 'Scroll up half page' })
-    vim.keymap.set('n', 'f', '<C-f>', { buffer = true, desc = 'Scroll down full page' })
-    vim.keymap.set('n', 'b', '<C-b>', { buffer = true, desc = 'Scroll up full page' })
-    vim.keymap.set('n', 'j', '<C-e>', { buffer = true, desc = 'Scroll down one line' })
-    vim.keymap.set('n', 'k', '<C-y>', { buffer = true, desc = 'Scroll up one line' })
-    print("Scroll mode enabled")
-  else
-    -- Exit scroll mode (restore normal behavior)
-    vim.keymap.del('n', 'd', { buffer = true })
-    vim.keymap.del('n', 'u', { buffer = true })
-    vim.keymap.del('n', 'f', { buffer = true })
-    vim.keymap.del('n', 'b', { buffer = true })
-    vim.keymap.del('n', 'j', { buffer = true })
-    vim.keymap.del('n', 'k', { buffer = true })
-    print("Scroll mode disabled")
-  end
-end
-
--- Toggle with <Leader>s
-vim.keymap.set('n', '<Leader>m', toggle_scroll_mode, { desc = 'Toggle scroll mode' })
 
 return {
     debug
