@@ -18,11 +18,11 @@ autocmd("FileType", {
     command = "setlocal shiftwidth=4",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    group = "FileTypeGroup",
-    pattern = "go",
-    command = "setlocal expandtab"
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     group = "FileTypeGroup",
+--     pattern = "go",
+--     command = "setlocal expandtab"
+-- })
 
 -- Set 2 for exceptions
 autocmd("FileType", {

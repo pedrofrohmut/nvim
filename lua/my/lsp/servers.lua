@@ -42,12 +42,13 @@ require("lspconfig").ts_ls.setup({ capabilities = default_capabilities })
 -- EXTRA SERVERS ###############################################################
 
 -- CSharp/Omnisharp
-require("lspconfig").omnisharp.setup({
-    -- cmd = { "dotnet", "/home/pedro/opt/omnisharp/OmniSharp.dll" }, -- From ref link above
-    -- cmd = { "/home/pedro/opt/omnisharp/OmniSharp", "-lsp" },
+-- Omnisharp: https://github.com/omnisharp/omnisharp-roslyn
+-- Nvim Config: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#omnisharp
+-- TODO: Config csharp with: Omnisharp-Extended-Lsp. at: https://github.com/Hoffs/omnisharp-extended-lsp.nvim
+vim.lsp.enable("omnisharp")
+vim.lsp.config("omnisharp", {
     capabilities = default_capabilities,
 })
--- TODO: Config csharp with: Omnisharp-Extended-Lsp. at: https://github.com/Hoffs/omnisharp-extended-lsp.nvim
 
 -- Go with gopls
 require("lspconfig").gopls.setup({ capabilities = default_capabilities })
