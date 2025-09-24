@@ -1,4 +1,5 @@
 local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local nvim_pid = vim.fn.getpid()
 
 -- Servers ---------------------------------------------------------------------
 
@@ -46,9 +47,12 @@ require("lspconfig").ts_ls.setup({ capabilities = default_capabilities })
 -- Nvim Config: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#omnisharp
 -- TODO: Config csharp with: Omnisharp-Extended-Lsp. at: https://github.com/Hoffs/omnisharp-extended-lsp.nvim
 vim.lsp.enable("omnisharp")
-vim.lsp.config("omnisharp", {
-    capabilities = default_capabilities,
-})
+vim.lsp.config("omnisharp", { capabilities = default_capabilities })
+-- local omnisharp_cmd = vim.fn.expand("$HOME/.local/share/nvim/mason/bin/OmniSharp")
+-- require("lspconfig").omnisharp.setup({
+--     cmd = { omnisharp_cmd, "--languageserver", "--hostPID", tostring(nvim_pid), "--encoding", "utf-8" },
+--     capabilities = default_capabilities,
+-- })
 
 -- Go with gopls
 require("lspconfig").gopls.setup({ capabilities = default_capabilities })
