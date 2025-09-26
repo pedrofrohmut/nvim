@@ -17,7 +17,12 @@ highlight(0, "TablineSel", { fg = "#88ffff", bg = "#323232" })
 highlight(0, "Tabline", { fg = "#989898", bg = "#252525" })
 
 -- Highlight tabs
-highlight(0, "HighlightTab", { fg = "#000000", bg = "#6666cc" })
+-- highlight(0, "HighlightTab", { fg = "#000000", bg = "#6666cc" })
+highlight(0, "HighlightTab", { fg = "#676767", bg = "none" })
+vim.cmd [[
+  " Toggle on with 'set list'
+  set listchars=tab:▸┈
+]]
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     pattern = '*',
@@ -25,6 +30,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
         vim.fn.matchadd("HighlightTab", '\t')
     end
 })
+
 -- Highlight Trailing White Spaces
 highlight(0, "TrailingWhitespace", { fg = "#000000", bg = "#666666" })
 
