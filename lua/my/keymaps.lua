@@ -213,6 +213,9 @@ end, { desc = "Remove trailing white spaces" })
 -- Easy remove tabs
 map("n", "<leader>sy", ":%s/\t/    /g", { desc = "Changes '\t' to 4 spaces" })
 
+-- Remove windows line endings
+map("n", "<leader>sr", ":%s/\r$//g", { desc = "Remove the '\r' in the end of the line" })
+
 -- Change word case
 map("n", "<leader>su", "g~iw") -- upcase inner word
 map("n", "<leader>sU", "g~iW") -- upcase inner big word

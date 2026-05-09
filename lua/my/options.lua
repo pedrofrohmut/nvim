@@ -29,15 +29,14 @@ opt.termguicolors  = true
 -- Behavior
 opt.splitright     = true
 opt.splitbelow     = true
---opt.sidescrolloff  = 8
 opt.cursorline     = true
 opt.mouse          = "a"
 opt.updatetime     = 250
 opt.wrap           = false
+--opt.sidescrolloff  = 8
 --opt.textwidth      = 100
 
 -- Files
---opt.fileformat     = "unix" -- Bugs lazy.nvim
 opt.backup         = false
 opt.writebackup    = false
 opt.autoread       = true
