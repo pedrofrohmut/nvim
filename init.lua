@@ -8,19 +8,19 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
 
     Plugins
     X Add a file explorer: like config netrw, add oil, check options later
-    - Add emmet
+    X Lualine
     X Check if auto-pairs is needed
-    - Statusbar bread crumbs
+    X Statusbar bread crumbs
     X Telescope
     - colorizer
     - Is nerdtree needed
-    - Lualine
+    - Add emmet
 
     LSP
+    X Mason
     - LSP config
     - Auto complete
     - Snippets
-    X Mason
     - Formatter
     - Debug
     - Symbols outline (tagbar)
@@ -40,7 +40,7 @@ vim.pack.add({
     "https://github.com/nvim-lua/plenary.nvim", -- Required for Telescope
     "https://github.com/nvim-telescope/telescope.nvim", -- Telescope: Fuzzy Finder + UI
     "https://github.com/nvim-lualine/lualine.nvim", -- Lualine: Statusline
-    "https://github.com/SmiteshP/nvim-navic", -- Winbar
+    "https://github.com/Bekaboo/dropbar.nvim", -- Breadcrumbs
 })
 
 vim.api.nvim_create_user_command("PackUpdate", function()

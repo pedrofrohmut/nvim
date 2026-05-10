@@ -1,9 +1,3 @@
--- Winbar / Breadcrumb ---------------------------------------------------------
-
-require("nvim-navic").setup({})
-
--- vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
 -- Lualine ---------------------------------------------------------------------
 
 require("lualine").setup({
@@ -64,11 +58,4 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = {}
     },
-    winbar = {
-         lualine_c = {
-            "navic",
-            color_correction = nil,
-            navic_opts = nil
-        },
-    }
 })
