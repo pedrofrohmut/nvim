@@ -20,6 +20,11 @@ map({ "n", "v" }, "<Space><Space>", "=")
 map("n", "<F1>", ":vertical help ")
 map("n", "<F2>", ":verbose map ")
 
+-- Open vim netrw
+map("n", "<leader>fe", ":Explore<CR>")
+map("n", "<leader>fw", ":Lexplore<CR>")
+map("n", "<leader>fq", ":find ")
+
 -- Easy Register Copy/Cut to/from System Clipboard (:checkhealth if not working)
 map("v", "<leader>sy", '"+y')
 map("v", "<leader>sd", '"+d')
@@ -56,6 +61,8 @@ map({ "i", "c" }, "<C-h>", "<BS>")
 map("n", "<Enter>", "i<Enter><Esc>")
 map("n", "<C-Space>", "i<Space><Esc>")
 
+-- open new line to type between character like ()
+map("i", "<C-j>", "<Enter><Enter><Up><Tab>")
 
 -- Insert ; at line end (Lazy nerd)
 map("n", "<leader>;", "mzA;<Esc>`z", { desc = "Insert ';' at line end without moving the cursor position" })
