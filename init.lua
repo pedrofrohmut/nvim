@@ -4,14 +4,14 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     TODOs:
 
     Nvim
-    - Treesitter update
+    X Treesitter update
 
     Plugins
-    - Add a file explorer: like config netrw, add oil, check options later
+    X Add a file explorer: like config netrw, add oil, check options later
     - Add emmet
-    - Check if auto-pairs is needed
+    X Check if auto-pairs is needed
     - Statusbar bread crumbs
-    - Telescope
+    X Telescope
     - colorizer
     - Is nerdtree needed
     - Lualine
@@ -20,7 +20,7 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     - LSP config
     - Auto complete
     - Snippets
-    - Mason
+    X Mason
     - Formatter
     - Debug
     - Symbols outline (tagbar)
@@ -40,6 +40,10 @@ vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim", -- Required for Telescope
   "https://github.com/nvim-telescope/telescope.nvim", -- Telescope: Fuzzy Finder + UI
 })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+    vim.pack.update()
+end, { desc = "Vim Pack Update Packages" })
 
 -- Vim Config
 require("colors")

@@ -4,10 +4,6 @@
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
-    "koda.nvim": {
-      "rev": "4668e307f2f3a1e38bd627b14d13368ebf5b8d9f",
-      "src": "https://github.com/oskarnurm/koda.nvim"
-    },
     "mason-lspconfig.nvim": {
       "rev": "51feb0ada33d18f3c5c71ffb46005dbf8b33bef4",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"

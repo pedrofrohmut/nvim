@@ -1,3 +1,7 @@
+local map = vim.keymap.set
+
+-- Servers ---------------------------------------------------------------------
+
 vim.lsp.config("lua_ls", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -6,27 +10,51 @@ vim.lsp.config("lua_ls", {
         Lua = {
             runtime = {
                 version = 'LuaJIT',
-            }
+                path = {
+                    'lua/?.lua',
+                    'lua/?/init.lua',
+                },
+            },
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME,
+                    vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
+                },
+            },
         }
     }
 })
+vim.lsp.config("clangd", {})
+vim.lsp.config("pyright", {})
+vim.lsp.config("ts_ls", {})
+vim.lsp.config("omnisharp", {})
+vim.lsp.config("gopls", {})
+vim.lsp.config("cssls", {})
+vim.lsp.config("html", {})
 
 -- vim.lsp.config('*', {
 --     capabilities = capabilities,
 -- })
 
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("pyright")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("omnisharp")
+vim.lsp.enable("gopls")
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
 
 -- Config ----------------------------------------------------------------------
 
--- TODO:
-vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = false,
-})
+-- vim.diagnostic.config({
+--     virtual_text = false,
+--     signs = true,
+--     underline = true,
+--     update_in_insert = false,
+--     severity_sort = false,
+-- })
 
 -- Mappings --------------------------------------------------------------------
 
@@ -53,8 +81,6 @@ vim.diagnostic.config({
       )
 ]]
 
-local map = vim.keymap.set
-
 -- LSP
 map("n", "<F11>", function()
     vim.cmd("lsp restart")
@@ -62,7 +88,7 @@ map("n", "<F11>", function()
 end, { desc = "Restart Lsp" })
 map("n", "<F12>", function()
     vim.cmd("checkhealth vim.lsp")
-end, { silent = true }, { desc = "Lsp Info" })
+end, { silent = true, desc = "Lsp Info" })
 
 -- Diagnostic
 map("n", "<leader>dd", function()
@@ -83,7 +109,6 @@ map("n", "]d", function()
 end, { desc = "Go To Next Diagnostic" })
 
 -- LspAttach -------------------------------------------------------------------
-
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
