@@ -1,4 +1,11 @@
 local map = vim.keymap.set
+local navic = require("nvim-navic")
+
+local navic_on_attach = function(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
+end
 
 -- Servers ---------------------------------------------------------------------
 
@@ -23,7 +30,7 @@ vim.lsp.config("lua_ls", {
                 },
             },
         }
-    }
+    },
 })
 vim.lsp.config("clangd", {})
 vim.lsp.config("pyright", {})
@@ -33,9 +40,10 @@ vim.lsp.config("gopls", {})
 vim.lsp.config("cssls", {})
 vim.lsp.config("html", {})
 
--- vim.lsp.config('*', {
---     capabilities = capabilities,
--- })
+vim.lsp.config('*', {
+    -- capabilities = capabilities
+    on_attach = navic_on_attach,
+})
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")

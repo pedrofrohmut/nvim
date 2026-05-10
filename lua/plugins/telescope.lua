@@ -44,6 +44,7 @@ require("telescope").setup({
     },
     extensions = {},
 })
+-- TODO: Recheck if fzf extension is needed
 
 map("n", "<leader>ff", builtin.find_files, { desc = "Telescope Find Files" })
 map("n", "<leader>fg", builtin.live_grep,  { desc = "Telescope Live Grep" })
@@ -71,7 +72,8 @@ end
 
 map("n", "<leader>fs", grep_search, { desc = "Telescope Grep" })
 
-map("n", "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
+-- map("n", "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
+map("n", "<leader>fl", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
 
 local no_preview_dropdown = themes.get_dropdown({
     previewer = false,
@@ -87,6 +89,6 @@ map("n", "<C-b>", function()
 end, { desc = "Telescope Buffers (No Preview)" })
 
 map("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find Diagnostics" })
-map("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
-map("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
-map("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })
+-- map("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
+-- map("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+-- map("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })
