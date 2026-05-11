@@ -31,6 +31,13 @@ local snip_completion = {
     },
 }
 
+local buffer_completion = {
+    config = {
+        sources = cmp.config.sources({
+            { name = "buffer" },
+        })
+    }
+}
 -- local ai_completion = {
 --     config = {
 --         sources = cmp.config.sources({ { name = "codeium" } }),
@@ -46,15 +53,22 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
-
     mapping = cmp.mapping.preset.insert({
         -- Docs scrolling
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
 
         -- Accept and abort completions
-        ["<Enter>"] = cmp.mapping.confirm({ select = true }),
+        ["<Enter>"] = cmp.mapping(function(fallback)
+            if not cmp.visible() then
+                fallback()
+            else
+                cmp.confirm({ select = true })
+            end
+        end),
         ["<C-e>"] = cmp.mapping.abort(),
+
+        -- LSP
         ["<C-Space>"] = cmp.mapping(function()
             if not cmp.visible() then
                 cmp.complete(lsp_completion)
@@ -79,6 +93,22 @@ cmp.setup({
         --     end
         -- end),
 
+        -- Buffer
+        ["<C-p>"] = cmp.mapping(function()
+            if not cmp.visible() then
+                cmp.complete(buffer_completion)
+            else
+                cmp.select_prev_item()
+            end
+        end),
+        ["<C-n>"] = cmp.mapping(function()
+            if not cmp.visible() then
+                cmp.complete(buffer_completion)
+            else
+                cmp.select_next_item()
+            end
+        end),
+
         -- Snippets
         ["<C-k>"] = cmp.mapping(function()
             if not cmp.visible() then
@@ -102,11 +132,11 @@ cmp.setup({
             end
         end),
     }),
-    sources = cmp.config.sources({
-        { name = "buffer" },
-        -- { name = "nvim_lsp" },
-        -- { name = "luasnip" },
-    }),
+    -- sources = cmp.config.sources({
+    --     -- { name = "buffer" },
+    --     -- { name = "nvim_lsp" },
+    --     -- { name = "luasnip" },
+    -- }),
 })
 
 -- `/` cmdline setup.
