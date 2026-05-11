@@ -10,7 +10,7 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     X Add a file explorer: like config netrw, add oil, check options later
     X Lualine
     X Check if auto-pairs is needed
-    X Statusbar bread crumbs
+    X Statusbar breadcrumbs
     X Telescope
     - colorizer
     - Is nerdtree needed
@@ -41,6 +41,20 @@ vim.pack.add({
     "https://github.com/nvim-telescope/telescope.nvim", -- Telescope: Fuzzy Finder + UI
     "https://github.com/nvim-lualine/lualine.nvim", -- Lualine: Statusline
     "https://github.com/Bekaboo/dropbar.nvim", -- Breadcrumbs
+
+    -- CMP Stuff
+    "https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "https://github.com/hrsh7th/cmp-buffer",
+    "https://github.com/hrsh7th/cmp-path",
+
+    -- Lua Snip
+    "https://github.com/L3MON4D3/LuaSnip",
+    "https://github.com/saadparwaiz1/cmp_luasnip",
+
+    -- CMP not required (trying out)
+    "https://github.com/hrsh7th/cmp-cmdline",
+    "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
 })
 
 vim.api.nvim_create_user_command("PackUpdate", function()
@@ -62,3 +76,4 @@ require("plugins/treesitter")
 require("plugins/telescope")
 require("plugins/git-signs")
 require("plugins/statusline-winbar")
+require("plugins/nvim-cmp")

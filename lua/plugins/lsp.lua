@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Servers ---------------------------------------------------------------------
 
@@ -34,7 +35,7 @@ vim.lsp.config("cssls", {})
 vim.lsp.config("html", {})
 
 vim.lsp.config('*', {
-    -- capabilities = capabilities
+    capabilities = capabilities
 })
 
 vim.lsp.enable("lua_ls")
