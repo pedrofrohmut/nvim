@@ -38,11 +38,6 @@ local buffer_completion = {
         })
     }
 }
--- local ai_completion = {
---     config = {
---         sources = cmp.config.sources({ { name = "codeium" } }),
---     },
--- }
 
 cmp.setup({
     completion = {
@@ -84,14 +79,8 @@ cmp.setup({
             end
         end),
 
-        -- AI (Cannot use <C-i> because tmux)
-        -- ["<C-y>"] = cmp.mapping(function()
-        --     if not cmp.visible() then
-        --         cmp.complete(ai_completion)
-        --     else
-        --         cmp.abort()
-        --     end
-        -- end),
+        -- AI Minuet
+        ["<A-i>"] = require("minuet").make_cmp_map(),
 
         -- Buffer
         ["<C-p>"] = cmp.mapping(function()
@@ -110,7 +99,7 @@ cmp.setup({
         end),
 
         -- Snippets
-        ["<C-k>"] = cmp.mapping(function()
+        ["<A-s>"] = cmp.mapping(function()
             if not cmp.visible() then
                 cmp.complete(snip_completion)
             end
@@ -122,7 +111,7 @@ cmp.setup({
             else
                 vim.notify("No snippets available to jump to", vim.log.levels.WARN)
             end
-        end),
+        end, { 'i', 's' }),
         ["<A-p>"] = cmp.mapping(function()
             local backward = -1
             if luasnip.jumpable(backward) then
@@ -130,13 +119,8 @@ cmp.setup({
             else
                 vim.notify("No snippets available to jump to", vim.log.levels.WARN)
             end
-        end),
+        end, { 'i', 's' }),
     }),
-    -- sources = cmp.config.sources({
-    --     -- { name = "buffer" },
-    --     -- { name = "nvim_lsp" },
-    --     -- { name = "luasnip" },
-    -- }),
 })
 
 -- `/` cmdline setup.

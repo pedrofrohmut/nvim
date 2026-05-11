@@ -33,6 +33,7 @@ vim.lsp.config("omnisharp", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("cssls", {})
 vim.lsp.config("html", {})
+vim.lsp.config("emmet_ls", {})
 
 vim.lsp.config('*', {
     capabilities = capabilities
@@ -46,6 +47,7 @@ vim.lsp.enable("omnisharp")
 vim.lsp.enable("gopls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("html")
+vim.lsp.enable("emmet_ls")
 
 -- Config ----------------------------------------------------------------------
 

@@ -174,8 +174,8 @@ map({ "n", "v" }, "H", "^") -- First non-blank character
 map({ "n", "v" }, "L", "g_") -- Last non-blank character
 
 -- Emacs inspired maps
-map({ "n", "v" }, "<A-a>", "k^") -- First character of previous line
-map({ "n", "v" }, "<A-e>", "2$") -- Last character of next line
+-- map({ "n", "v" }, "<A-a>", "k^") -- First character of previous line
+-- map({ "n", "v" }, "<A-e>", "2$") -- Last character of next line
 
 -- Scrolling Vertical
 map({ "n", "v" }, "<C-k>", "12<C-y>")
