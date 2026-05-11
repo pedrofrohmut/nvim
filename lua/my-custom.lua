@@ -8,9 +8,6 @@ local preview_win = function(lines)
     vim.api.nvim_buf_set_option(buf, "modifiable", false)
     vim.api.nvim_buf_set_option(buf, "filetype", "lua") -- For syntax highlighting
 
-    -- local width = vim.api.nvim_get_option("columns") - 80
-    -- print("Columns: " .. vim.api.nvim_get_option("columns"))
-
     local win_lines = vim.api.nvim_get_option("lines")
     local win_cols = vim.api.nvim_get_option("columns")
     local width = math.floor(win_cols - (win_cols/4))
