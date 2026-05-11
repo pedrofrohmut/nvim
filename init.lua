@@ -12,15 +12,16 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     X Check if auto-pairs is needed
     X Statusbar breadcrumbs
     X Telescope
-    - colorizer
+    - Colorizer
     - Is nerdtree needed
     - Add emmet
+    - AI autocomplete
 
     LSP
     X Mason
+    X Auto complete
+    X Snippets
     - LSP config
-    - Auto complete
-    - Snippets
     - Formatter
     - Debug
     - Symbols outline (tagbar)
@@ -61,11 +62,21 @@ vim.api.nvim_create_user_command("PackUpdate", function()
     vim.pack.update()
 end, { desc = "Vim Pack Update Packages" })
 
+vim.api.nvim_create_user_command("PackList", function()
+    local packs = vim.iter(vim.pack.get())
+        :map(function(x) return x.spec.name end)
+        :totable()
+    -- print(packs)
+    local my = require("my-custom")
+    my.debug_big(packs)
+end, { desc = "Vim Pack List Packages" })
+
 -- Vim Config
 require("colors")
 require("autocmd")
 require("options")
 require("keybinds")
+require("my-custom")
 
 -- Plugins Config
 require("plugins/mason")

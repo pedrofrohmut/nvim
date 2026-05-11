@@ -71,7 +71,7 @@ cmp.setup({
         end),
 
         -- AI (Cannot use <C-i> because tmux)
-        -- ["<C-k>"] = cmp.mapping(function()
+        -- ["<C-y>"] = cmp.mapping(function()
         --     if not cmp.visible() then
         --         cmp.complete(ai_completion)
         --     else
