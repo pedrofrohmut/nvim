@@ -3,4 +3,13 @@ require("nvim-treesitter").setup({
 })
 
 -- TODO: Check react code. It was bugged before with treesitter
-require("nvim-treesitter").install({ "rust", "java", "javascript", "typescript", "tsx", "c_sharp", "python", "go" })
+require("nvim-treesitter").install({
+    "rust",
+    "java",
+    "c_sharp",
+    "python",
+    "go",
+    "javascript",
+    "typescript",
+    "tsx",
+})

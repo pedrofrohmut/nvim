@@ -92,6 +92,10 @@
       "rev": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "vim-jsx-pretty": {
+      "rev": "6989f1663cc03d7da72b5ef1c03f87e6ddb70b41",
+      "src": "https://github.com/MaxMEllon/vim-jsx-pretty"
+    },
     "vim-lion": {
       "rev": "ce46593ecd60e6051fb6e4d3986d2fc9f5a618b1",
       "src": "https://github.com/tommcdo/vim-lion"
