@@ -19,8 +19,8 @@ require("lualine").setup({
                     readonly = "[-]",
                     unnamed = "[No Name]",
                     newfile = "[New]",
-                }
-            }
+                },
+            },
         },
         lualine_c = {},
 
@@ -29,12 +29,12 @@ require("lualine").setup({
             "filetype",
             {
                 "fileformat",
-                symbols = { unix = "UNIX", dos = "DOS", mac = "MAC" }
+                symbols = { unix = "UNIX", dos = "DOS", mac = "MAC" },
             },
-            "encoding"
+            "encoding",
         },
         lualine_y = { "progress", "location" },
-        lualine_z = {}
+        lualine_z = {},
     },
     inactive_sections = {
         lualine_a = {},
@@ -51,11 +51,11 @@ require("lualine").setup({
                     readonly = "[-]",
                     unnamed = "[No Name]",
                     newfile = "[New]",
-                }
-            }
+                },
+            },
         },
         lualine_x = { "location" },
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
     },
 })

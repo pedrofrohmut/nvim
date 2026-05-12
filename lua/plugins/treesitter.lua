@@ -1,5 +1,5 @@
 require("nvim-treesitter").setup({
-    install_dir = vim.fn.stdpath('data') .. '/site'
+    install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
 -- TODO: Check react code. It was bugged before with treesitter

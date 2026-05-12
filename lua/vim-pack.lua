@@ -4,7 +4,9 @@ end, { desc = "Vim Pack Update Packages" })
 
 vim.api.nvim_create_user_command("PackList", function()
     local packs = vim.iter(vim.pack.get())
-        :map(function(x) return x.spec.name end)
+        :map(function(x)
+            return x.spec.name
+        end)
         :totable()
     local my = require("my-custom")
     my.debug_big(packs)
@@ -42,4 +44,6 @@ vim.pack.add({
 
     "https://github.com/milanglacier/minuet-ai.nvim", -- Minuet: AI Completion
     "https://github.com/mattn/emmet-vim", -- Emmet
+    "https://github.com/stevearc/conform.nvim", -- Conform: Code Formatter
+    "https://github.com/mfussenegger/nvim-lint", -- Nvim-Lint
 })

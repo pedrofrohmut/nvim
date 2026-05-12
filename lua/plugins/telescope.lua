@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 local themes = require("telescope.themes")
 
 require("telescope").setup({
-        defaults = {
+    defaults = {
         file_ignore_patterns = {
             "bin/",
             "obj/",
@@ -47,11 +47,11 @@ require("telescope").setup({
 -- TODO: Recheck if fzf extension is needed
 
 map("n", "<leader>ff", builtin.find_files, { desc = "Telescope Find Files" })
-map("n", "<leader>fg", builtin.live_grep,  { desc = "Telescope Live Grep" })
-map("n", "<leader>fb", builtin.buffers,    { desc = "Telescope Buffers" })
-map("n", "<leader>fh", builtin.help_tags,  { desc = "Telescope Help" })
-map("n", "<leader>fk", builtin.keymaps,    { desc = "Telescope Keymaps" })
-map("n", "<leader>fr", builtin.registers,  { desc = "Telescope Registers" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope Live Grep" })
+map("n", "<leader>fb", builtin.buffers, { desc = "Telescope Buffers" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope Help" })
+map("n", "<leader>fk", builtin.keymaps, { desc = "Telescope Keymaps" })
+map("n", "<leader>fr", builtin.registers, { desc = "Telescope Registers" })
 
 -- Find files with hidden and gitignored
 map("n", "<leader>fa", function()

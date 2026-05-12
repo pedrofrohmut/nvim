@@ -68,4 +68,3 @@ autocmd({ "FocusGained", "VimEnter", "WinEnter", "BufWinEnter" }, {
     pattern = "*",
     command = "checktime",
 })
-

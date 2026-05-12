@@ -13,7 +13,7 @@ require("luasnip.loaders.from_lua").lazy_load({
 local lsp_completion = {
     config = {
         sources = cmp.config.sources({
-            { name = 'nvim_lsp_signature_help' },
+            { name = "nvim_lsp_signature_help" },
             { name = "nvim_lsp" },
         }),
     },
@@ -35,8 +35,8 @@ local buffer_completion = {
     config = {
         sources = cmp.config.sources({
             { name = "buffer" },
-        })
-    }
+        }),
+    },
 }
 
 cmp.setup({
@@ -111,7 +111,7 @@ cmp.setup({
             else
                 vim.notify("No snippets available to jump to", vim.log.levels.WARN)
             end
-        end, { 'i', 's' }),
+        end, { "i", "s" }),
         ["<A-p>"] = cmp.mapping(function()
             local backward = -1
             if luasnip.jumpable(backward) then
@@ -119,35 +119,35 @@ cmp.setup({
             else
                 vim.notify("No snippets available to jump to", vim.log.levels.WARN)
             end
-        end, { 'i', 's' }),
+        end, { "i", "s" }),
     }),
 })
 
 -- `/` cmdline setup.
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
     -- completion = {
     --     autocomplete = { 'TextChanged', 'InsertEnter' },
     -- },
     mapping = cmp.mapping.preset.cmdline(), -- Manual trigger <C-i>
     sources = {
-        { name = 'buffer' }
-    }
+        { name = "buffer" },
+    },
 })
 
 -- `:` cmdline setup.
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
     -- completion = {
     --     autocomplete = { 'TextChanged', 'InsertEnter' },
     -- },
     mapping = cmp.mapping.preset.cmdline(), -- Manual trigger <C-i>
     sources = cmp.config.sources({
-        { name = 'path' }
+        { name = "path" },
     }, {
         {
-            name = 'cmdline',
+            name = "cmdline",
             option = {
-                ignore_cmds = { 'Man', '!' }
-            }
-        }
-    })
+                ignore_cmds = { "Man", "!" },
+            },
+        },
+    }),
 })

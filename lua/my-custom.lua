@@ -10,7 +10,7 @@ local preview_win = function(lines)
 
     local win_lines = vim.api.nvim_get_option("lines")
     local win_cols = vim.api.nvim_get_option("columns")
-    local width = math.floor(win_cols - (win_cols/4))
+    local width = math.floor(win_cols - (win_cols / 4))
 
     local win = vim.api.nvim_open_win(buf, false, {
         -- Size

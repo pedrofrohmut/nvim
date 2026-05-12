@@ -1,19 +1,19 @@
 local map = vim.keymap.set
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Servers ---------------------------------------------------------------------
 
 vim.lsp.config("lua_ls", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
-    root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+    root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
     settings = {
         Lua = {
             runtime = {
-                version = 'LuaJIT',
+                version = "LuaJIT",
                 path = {
-                    'lua/?.lua',
-                    'lua/?/init.lua',
+                    "lua/?.lua",
+                    "lua/?/init.lua",
                 },
             },
             workspace = {
@@ -23,7 +23,7 @@ vim.lsp.config("lua_ls", {
                     vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
                 },
             },
-        }
+        },
     },
 })
 vim.lsp.config("clangd", {})
@@ -35,8 +35,8 @@ vim.lsp.config("cssls", {})
 vim.lsp.config("html", {})
 vim.lsp.config("emmet_ls", {})
 
-vim.lsp.config('*', {
-    capabilities = capabilities
+vim.lsp.config("*", {
+    capabilities = capabilities,
 })
 
 vim.lsp.enable("lua_ls")
@@ -113,8 +113,14 @@ end, { desc = "Go To Next Diagnostic" })
 
 -- LspAttach -------------------------------------------------------------------
 
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+        local opts = { buffer = ev.buf }
+
+        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
     end,
 })
+
+vim.api.nvim_create_user_command("LspFormat", vim.lsp.buf.format, { desc = "Format code with LSP Server" })

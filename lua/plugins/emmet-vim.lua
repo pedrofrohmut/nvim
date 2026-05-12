@@ -11,4 +11,3 @@ Main commands
   4. Normal <C-y>/   emmet-toggle-comment
   4. lorem{n}        emmet-lorem-ipsum
 ]]
-

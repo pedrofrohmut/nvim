@@ -9,7 +9,7 @@
 
 local map = vim.keymap.set
 
- -- Unsetters: Do nothing to remove unwanted default behavior
+-- Unsetters: Do nothing to remove unwanted default behavior
 map("n", "R", "<Nop>") -- Disable WTF mode
 map("i", "<C-i>", "<Nop>") -- Can use C-i for completions
 
@@ -203,7 +203,12 @@ map("n", "'0", "'0zz")
 -- Find-Replace
 map("n", "<leader>ss", ":%s/", { desc = "Find and replace for entire file" })
 map("v", "<leader>ss", ":s/", { desc = "Find and replace for selected text" })
-map("v", "<leader>sh", 'y<Esc>:%s/<C-r>"/', { desc = "Find and replace entire file that auto capture the selected text" })
+map(
+    "v",
+    "<leader>sh",
+    'y<Esc>:%s/<C-r>"/',
+    { desc = "Find and replace entire file that auto capture the selected text" }
+)
 
 -- Sort
 -- map("v", "<leader>sp", ":sort<Enter>", { desc = "Call sorting command on selected text" })
@@ -237,4 +242,3 @@ map("n", "<leader>xv", ":vs | terminal zsh<CR>")
 map("n", "<leader>xs", ":sp | terminal zsh<CR>")
 
 map("t", "<C-w><C-w>", "<C-\\><C-n><C-w>w")
-
