@@ -24,8 +24,8 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     X LSP config
     X Formatter
     X Linter
+    X Symbols outline (tagbar)
     - Debug
-    - Symbols outline (tagbar)
 ]]
 
 -- Vim Config
@@ -50,3 +50,4 @@ require("plugins/minuet-ai")
 require("plugins/emmet-vim")
 require("plugins/conform")
 require("plugins/lint")
+require("plugins/symbols-outline")

@@ -46,4 +46,5 @@ vim.pack.add({
     "https://github.com/mattn/emmet-vim", -- Emmet
     "https://github.com/stevearc/conform.nvim", -- Conform: Code Formatter
     "https://github.com/mfussenegger/nvim-lint", -- Nvim-Lint
+    "https://github.com/hedyhli/outline.nvim", -- Symbols outline
 })
