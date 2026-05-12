@@ -15,15 +15,15 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
     X AI autocomplete
     X Colorizer
     X Add emmet
-    - Is nerdtree needed
+    X Is nerdtree needed
 
     LSP
     X Mason
     X Auto complete
     X Snippets
     X LSP config
-    - Formatter
-    - Linter
+    X Formatter
+    X Linter
     - Debug
     - Symbols outline (tagbar)
 ]]

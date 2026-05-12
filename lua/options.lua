@@ -49,4 +49,7 @@ vim.cmd([[ set path=.,** ]]) -- Set path
 vim.cmd([[ set path-=**/node_modules,.git/ ]])
 opt.wildmenu = true
 
-vim.g.netrw_winsize = 48
+vim.g.netrw_winsize = 20
+vim.g.netrw_liststyle = 3 -- 3 for Tree style
+vim.g.netrw_banner = 0 -- hide the banner
+vim.g.netrw_browse_split = 4 -- opened files with <CR> open like preview
