@@ -64,7 +64,7 @@ cmp.setup({
         ["<C-e>"] = cmp.mapping.abort(),
 
         -- LSP
-        ["<C-Space>"] = cmp.mapping(function()
+        ["<C-j>"] = cmp.mapping(function()
             if not cmp.visible() then
                 cmp.complete(lsp_completion)
             else
@@ -80,7 +80,7 @@ cmp.setup({
         end),
 
         -- AI Minuet
-        ["<A-i>"] = require("minuet").make_cmp_map(),
+        ["<C-x>i"] = require("minuet").make_cmp_map(),
 
         -- Buffer
         ["<C-p>"] = cmp.mapping(function()
@@ -136,9 +136,9 @@ cmp.setup.cmdline("/", {
 
 -- `:` cmdline setup.
 cmp.setup.cmdline(":", {
-    completion = {
-        autocomplete = { "TextChanged", "InsertEnter" },
-    },
+    -- completion = {
+    --     autocomplete = { "TextChanged", "InsertEnter" },
+    -- },
     mapping = cmp.mapping.preset.cmdline(), -- Manual trigger <C-i>
     sources = cmp.config.sources({
         { name = "path" },

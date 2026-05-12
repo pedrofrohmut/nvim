@@ -62,7 +62,7 @@ map("n", "<Enter>", "i<Enter><Esc>")
 map("n", "<C-Space>", "i<Space><Esc>")
 
 -- open new line to type between character like ()
-map("i", "<C-j>", "<Enter><Esc>ko")
+-- map("i", "<C-j>", "<Enter><Esc>ko")
 
 -- Insert ; at line end (Lazy nerd)
 map("n", "<leader>;", "mzA;<Esc>`z", { desc = "Insert ';' at line end without moving the cursor position" })
@@ -90,7 +90,7 @@ map("n", "<leader>zl", function()
     else
         vim.notify("Line wrap is on")
     end
-end)
+end, { desc = "Toggle Line Wrap and Line Break" })
 
 -- Language-Aware Inline Comment
 map("n", "gcl", function()

@@ -12,6 +12,13 @@ vim.api.nvim_create_user_command("PackList", function()
     my.debug_big(packs)
 end, { desc = "Vim Pack List Packages" })
 
+-- Info the packages separated by spaces. Use :PackList to check names
+-- Usage :PackDel my-pack1 my-pack2 my-pack3
+vim.api.nvim_create_user_command("PackDel", function(opts)
+    local packs = vim.split(opts.args, " ")
+    vim.pack.del(packs)
+end, { desc = "Vim Pack Del Packages", nargs = "*" })
+
 vim.pack.add({
     "https://github.com/sainnhe/sonokai", -- My colorscheme
     "https://github.com/tpope/vim-surround", -- Surround

@@ -49,15 +49,15 @@ vim.lsp.enable("cssls")
 vim.lsp.enable("html")
 vim.lsp.enable("emmet_ls")
 
--- Config ----------------------------------------------------------------------
+-- Diagnostics -----------------------------------------------------------------
 
--- vim.diagnostic.config({
---     virtual_text = false,
---     signs = true,
---     underline = true,
---     update_in_insert = false,
---     severity_sort = false,
--- })
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = false,
+})
 
 -- Mappings --------------------------------------------------------------------
 

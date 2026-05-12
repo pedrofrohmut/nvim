@@ -19,4 +19,4 @@ require("conform").setup({
     },
 })
 
-vim.keymap.set("n", "<leader>cf", require("conform").format)
+vim.keymap.set("n", "<leader>cf", require("conform").format, { desc = "Runs the conform formatter" })

@@ -12,4 +12,4 @@ lint.linters_by_ft = {
 -- Autocmd to run linter on file save
 --vim.api.nvim_create_autocmd({ "BufWritePost" }, { callback = lint.try_lint })
 
-vim.keymap.set("n", "<leader>cl", lint.try_lint)
+vim.keymap.set("n", "<leader>cl", lint.try_lint, { desc = "Run code Linter" })
