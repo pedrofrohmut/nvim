@@ -136,9 +136,9 @@ cmp.setup.cmdline("/", {
 
 -- `:` cmdline setup.
 cmp.setup.cmdline(":", {
-    -- completion = {
-    --     autocomplete = { 'TextChanged', 'InsertEnter' },
-    -- },
+    completion = {
+        autocomplete = { "TextChanged", "InsertEnter" },
+    },
     mapping = cmp.mapping.preset.cmdline(), -- Manual trigger <C-i>
     sources = cmp.config.sources({
         { name = "path" },

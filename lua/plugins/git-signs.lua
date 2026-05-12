@@ -1,6 +1,21 @@
 local gs = require("gitsigns")
 local map = vim.keymap.set
 local cmd = vim.api.nvim_create_user_command
+local highlight = vim.api.nvim_set_hl
+
+highlight(0, "GitSignsAddInLine", { fg = "#9ed072" }) -- Green for additions
+highlight(0, "GitSignsChangeInLine", { fg = "#e6c384" }) -- Yellow for changes
+highlight(0, "GitSignsDeleteInLine", { fg = "#c34043" }) -- Red for deletions
+
+gs.setup({
+    preview_config = {
+        border = "single",
+        style = "minimal",
+        relative = "cursor",
+        row = 0,
+        col = 1,
+    },
+})
 
 -- Navigation
 map("n", "]g", function()
