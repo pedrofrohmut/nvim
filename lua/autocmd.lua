@@ -27,7 +27,7 @@ autocmd("FileType", {
 -- Set 2 for exceptions
 autocmd("FileType", {
     group = "FileTypeGroup",
-    pattern = { "html", "javascriptreact", "typescriptreact" },
+    pattern = { "html", "javascriptreact", "typescriptreact", "javascript", "typescript" },
     command = "setlocal shiftwidth=2 ",
 })
 

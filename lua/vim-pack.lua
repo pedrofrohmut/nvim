@@ -30,10 +30,13 @@ vim.pack.add({
     "https://github.com/mason-org/mason.nvim", -- Mason: Install lsp servers, linters, formaters, debug adapters
     "https://github.com/mason-org/mason-lspconfig.nvim", -- Mason Lspconfig: Makes easier to use Mason + Lsp Config
     "https://github.com/nvim-treesitter/nvim-treesitter", -- Treesitter
-    "https://github.com/nvim-lua/plenary.nvim", -- Required for Telescope
-    "https://github.com/nvim-telescope/telescope.nvim", -- Telescope: Fuzzy Finder + UI
     "https://github.com/nvim-lualine/lualine.nvim", -- Lualine: Statusline
     "https://github.com/Bekaboo/dropbar.nvim", -- Breadcrumbs
+
+    -- Telescope
+    "https://github.com/nvim-lua/plenary.nvim", -- Required for Telescope
+    "https://github.com/nvim-telescope/telescope.nvim", -- Telescope: Fuzzy Finder + UI
+    "nvim-telescope/telescope-fzf-native.nvim",
 
     -- CMP Stuff
     "https://github.com/hrsh7th/nvim-cmp",
