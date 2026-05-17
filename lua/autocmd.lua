@@ -11,25 +11,33 @@ autocmd("FileType", {
     command = "setlocal formatoptions-=cro",
 })
 
--- Set 4 indent to all files
+-- Set 2 for exceptions
 autocmd("FileType", {
     group = "FileTypeGroup",
-    pattern = "*",
-    command = "setlocal shiftwidth=4",
+    pattern = { "html", "javascriptreact", "typescriptreact", "javascript", "typescript" },
+    callback = function()
+        vim.cmd("setlocal shiftwidth=2")
+        vim.cmd("setlocal softtabstop=2")
+        vim.cmd("setlocal tabstop=2")
+    end,
 })
+
+-- Set 4 indent to all files
+-- autocmd("FileType", {
+--     group = "FileTypeGroup",
+--     pattern = "*",
+--     callback = function()
+--         vim.cmd("setlocal shiftwidth=4")
+--         vim.cmd("setlocal softtabstop=4")
+--         vim.cmd("setlocal tabstop=4")
+--     end,
+-- })
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --     group = "FileTypeGroup",
 --     pattern = "go",
 --     command = "setlocal expandtab"
 -- })
-
--- Set 2 for exceptions
-autocmd("FileType", {
-    group = "FileTypeGroup",
-    pattern = { "html", "javascriptreact", "typescriptreact", "javascript", "typescript" },
-    command = "setlocal shiftwidth=2 ",
-})
 
 -- Default <Enter> on the quickfix list
 autocmd("FileType", {
