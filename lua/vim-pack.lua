@@ -47,6 +47,7 @@ vim.pack.add({
     -- Lua Snip
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/saadparwaiz1/cmp_luasnip",
+    "https://github.com/rafamadriz/friendly-snippets",
 
     -- CMP not required (trying out)
     "https://github.com/hrsh7th/cmp-cmdline",
@@ -58,4 +59,5 @@ vim.pack.add({
     "https://github.com/mfussenegger/nvim-lint", -- Nvim-Lint
     "https://github.com/hedyhli/outline.nvim", -- Symbols outline
     "https://github.com/MaxMEllon/vim-jsx-pretty", -- Indentation for react
+    "https://github.com/preservim/nerdtree", -- NerdTree
 })
