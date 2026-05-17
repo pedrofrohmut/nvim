@@ -12,6 +12,7 @@ local map = vim.keymap.set
 -- Unsetters: Do nothing to remove unwanted default behavior
 map("n", "R", "<Nop>") -- Disable WTF mode
 map("i", "<C-i>", "<Nop>") -- Can use C-i for completions
+map("i", "<C-Space>", "<Nop>") -- (i_CTRL-@) Insert last insert and stop insert. Not usefull
 
 -- Indent
 map({ "n", "v" }, "<Space><Space>", "=")
@@ -197,6 +198,9 @@ map({ "n", "v" }, "<C-l>", "3zl")
 -- Center when jumping
 map("n", "`0", "`0zz")
 map("n", "'0", "'0zz")
+
+-- Center cursor in the screen (It's actually Ctrl + Alt + l but my Alt hjkl are mapped to arrow keys with keyd)
+map("n", "<C-Right>", "zz", { desc = "Cursor line to center of the screen" })
 
 -- String Utils ----------------------------------------------------------------
 
