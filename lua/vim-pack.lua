@@ -60,4 +60,9 @@ vim.pack.add({
     "https://github.com/hedyhli/outline.nvim", -- Symbols outline
     "https://github.com/MaxMEllon/vim-jsx-pretty", -- Indentation for react
     "https://github.com/preservim/nerdtree", -- NerdTree
+
+    -- Debug
+    "https://github.com/mfussenegger/nvim-dap", -- DAP impl for neovim
+    "https://github.com/nvim-neotest/nvim-nio", -- Required for DapUI
+    "https://github.com/rcarriga/nvim-dap-ui", -- UI for debugging
 })
