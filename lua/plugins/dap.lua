@@ -17,9 +17,17 @@ dapui.setup({
                 { id = "console", size = 0.5 },
             },
             position = "bottom",
-            size = 8,
+            size = 10,
         },
     },
+    -- mappings = {
+    --   edit = "e",
+    --   expand = { "<CR>", "<2-LeftMouse>" },
+    --   open = "o",
+    --   remove = "d",
+    --   repl = "r",
+    --   toggle = "t"
+    -- },
 })
 
 local map = vim.keymap.set
@@ -49,10 +57,19 @@ map("n", "<leader>dr", function()
     end
 end, { desc = "Debug: Restart Debug Session" })
 
--- Stepping (TODO: add zz `center it` to the keybinds)
-map("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
-map("n", "<F11>", dap.step_into, { desc = "Debug: Step Into" })
-map("n", "<S-F11>", dap.step_out, { desc = "Debug: Step Out" })
+-- Stepping
+map("n", "<F10>", function()
+    dap.step_over()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { desc = "Debug: Step Over" })
+map("n", "<F11>", function()
+    dap.step_into()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { desc = "Debug: Step Into" })
+map("n", "<S-F11>", function()
+    dap.step_out()
+    vim.api.nvim_feedkeys("zz", "n", false)
+end, { desc = "Debug: Step Out" })
 
 -- Breakpoints
 map("n", "<F9>", function()
