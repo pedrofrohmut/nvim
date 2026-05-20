@@ -44,3 +44,7 @@ vim.keymap.set("n", "<leader>tt", function()
     vim.cmd("NERDTreeToggle")
     vim.cmd("NERDTreeRefreshRoot")
 end, { desc = "NERDTree Tree Toggle && Refresh" })
+
+-- Refresh NERDTree on buf write and buff focus
+vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = "NERDTreeRefreshRoot" })
+vim.api.nvim_create_autocmd("BufEnter", { pattern = "NERD_tree_tab_*", command = "NERDTreeRefreshRoot" })
