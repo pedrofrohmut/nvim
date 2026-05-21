@@ -280,6 +280,20 @@ dap.configurations.javascript = {
         runtimeExecutable = "node",
         skipFiles = { "<node_internals>/**" },
     },
+    {
+        name = "Attach to Node.js",
+        type = "pwa-node",
+        request = "attach",
+        port = 9222,
+        skipFiles = { "<node_internals>/**" },
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+        },
+        webRoot = "${workspaceFolder}",
+    },
 }
 
 dap.configurations.typescript = dap.configurations.javascript
