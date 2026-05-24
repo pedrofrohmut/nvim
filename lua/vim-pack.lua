@@ -28,7 +28,7 @@ vim.pack.add({
     "https://github.com/lewis6991/gitsigns.nvim", -- Git gutter
     "https://github.com/neovim/nvim-lspconfig", -- LSP Config
     "https://github.com/mason-org/mason.nvim", -- Mason: Install lsp servers, linters, formaters, debug adapters
-    "https://github.com/mason-org/mason-lspconfig.nvim", -- Mason Lspconfig: Makes easier to use Mason + Lsp Config
+    -- "https://github.com/mason-org/mason-lspconfig.nvim", -- Mason Lspconfig: Makes easier to use Mason + Lsp Config
     "https://github.com/nvim-treesitter/nvim-treesitter", -- Treesitter
     "https://github.com/nvim-lualine/lualine.nvim", -- Lualine: Statusline
     "https://github.com/Bekaboo/dropbar.nvim", -- Breadcrumbs
