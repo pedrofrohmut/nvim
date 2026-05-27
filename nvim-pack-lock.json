@@ -112,6 +112,10 @@
       "rev": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
     "vim-jsx-pretty": {
       "rev": "6989f1663cc03d7da72b5ef1c03f87e6ddb70b41",
       "src": "https://github.com/MaxMEllon/vim-jsx-pretty"

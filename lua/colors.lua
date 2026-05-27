@@ -1,12 +1,32 @@
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
--- This configuration options should be placed before `colorscheme sonokai`.
-vim.g.sonokai_style = "shusia"
-vim.g.sonokai_better_performance = 1
-vim.g.sonokai_transparent_background = 2
+local main_colorscheme = true
 
-vim.cmd.colorscheme("sonokai")
+if main_colorscheme then
+    -- This configuration options should be placed before `colorscheme sonokai`.
+    vim.g.sonokai_style = "shusia"
+    vim.g.sonokai_better_performance = 1
+    vim.g.sonokai_transparent_background = 2
+
+    vim.cmd.colorscheme("sonokai")
+else
+    require("tokyonight").setup({
+        transparent = true,
+
+        -- Choose your style: "storm", "moon", "night", or "day"
+        style = "night",
+
+        styles = {
+            sidebars = "transparent",
+            floats = "transparent",
+        },
+
+        dim_inactive = false,
+    })
+
+    vim.cmd.colorscheme("tokyonight")
+end
 
 local highlight = vim.api.nvim_set_hl
 
