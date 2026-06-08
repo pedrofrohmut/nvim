@@ -111,9 +111,15 @@ dap.adapters.gdb = {
     args = { "--interpreter=dap" },
 }
 
+dap.adapters.gdb_attach = {
+    type = "executable",
+    command = "gdb",
+    args = { "--interpreter=dap", "--eval-command", "target remote localhost:9222" },
+}
+
 local c_cpp_config = {
     {
-        name = "Launch",
+        name = "Launch GDB",
         type = "gdb",
         request = "launch",
         program = function()
@@ -121,6 +127,80 @@ local c_cpp_config = {
         end,
         cwd = "${workspaceFolder}",
     },
+    --[[
+    The file should be like this:
+    ``` debug.lua
+    return {
+        executable_path = "./my_app",
+    }
+    ```
+    The path should be from the vim.cwd to be appended to the vim.fn.getcwd() later
+    ]]
+    {
+        name = "Launch GDB - debug.lua",
+        type = "gdb",
+        request = "launch",
+        program = function()
+            local config_path = vim.fn.getcwd() .. "/debug.lua"
+
+            if vim.fn.filereadable(config_path) ~= 1 then
+                vim.notify("No debug.lua found in the vim cwd")
+                return nil
+            end
+
+            local config = dofile(config_path)
+
+            if config.executable_path == nil then
+                vim.notify("No 'executable_path' found in debug.lua")
+                return nil
+            end
+
+            local full_exe_path = vim.fn.getcwd() .. "/" .. config.executable_path
+
+            if vim.fn.filereadable(full_exe_path) ~= 1 then
+                vim.notify("Could not found the executable at '" .. full_exe_path .. "'")
+                return nil
+            end
+
+            vim.notify("Debug is starting for: " .. full_exe_path)
+
+            return full_exe_path
+        end,
+        cwd = "${workspaceFolder}",
+    },
+    -- TODO: Change this one to gdb_attach
+    -- {
+    --     name = "Launch Winedbg - debug.lua",
+    --     type = "winedbg",
+    --     request = "launch",
+    --     program = function()
+    --         local config_path = vim.fn.getcwd() .. "/debug.lua"
+    --
+    --         if vim.fn.filereadable(config_path) ~= 1 then
+    --             vim.notify("No debug.lua found in the vim cwd")
+    --             return nil
+    --         end
+    --
+    --         local config = dofile(config_path)
+    --
+    --         if config.executable_path == nil then
+    --             vim.notify("No 'executable_path' found in debug.lua")
+    --             return nil
+    --         end
+    --
+    --         local full_exe_path = vim.fn.getcwd() .. "/" .. config.executable_path
+    --
+    --         if vim.fn.filereadable(full_exe_path) ~= 1 then
+    --             vim.notify("Could not found the executable at '" .. full_exe_path .. "'")
+    --             return nil
+    --         end
+    --
+    --         vim.notify("Debug is starting for: " .. full_exe_path)
+    --
+    --         return full_exe_path
+    --     end,
+    --     cwd = "${workspaceFolder}",
+    -- }
 }
 
 dap.configurations.c = c_cpp_config
@@ -227,7 +307,7 @@ dap.configurations.go = {
     },
 }
 
--- JavaScript ------------------------------------------------------------------
+-- JavaScript/Typescript -------------------------------------------------------
 
 dap.adapters["pwa-chrome"] = {
     type = "server",
@@ -239,7 +319,7 @@ dap.adapters["pwa-chrome"] = {
     },
 }
 
-dap.adapters["node"] = {
+dap.adapters["pwa-node"] = {
     type = "server",
     host = "localhost",
     port = "${port}",
@@ -248,11 +328,10 @@ dap.adapters["node"] = {
         args = { "${port}" },
     },
 }
-dap.adapters["pwa-node"] = dap.adapters["node"]
 
 dap.configurations.javascript = {
     {
-        name = "Launch Chrome Localhost",
+        name = "Launch Chrome",
         type = "pwa-chrome",
         request = "launch",
         url = "http://localhost:3000",
@@ -263,36 +342,24 @@ dap.configurations.javascript = {
         name = "Attach to Chrome",
         type = "pwa-chrome",
         request = "attach",
-        port = 9222,
+        port = 9229,
         webRoot = "${workspaceFolder}",
     },
     {
-        name = "Launch Node.js",
-        type = "pwa-node", -- Use pwa-node for JavaScript/TypeScript
+        name = "Launch Node",
+        type = "pwa-node",
         request = "launch",
         program = "${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        resolveSourceMapLocations = {
-            "${workspaceFolder}/**",
-            "!**/node_modules/**",
-        },
-        runtimeExecutable = "node",
-        skipFiles = { "<node_internals>/**" },
+        cwd = "${workspaceFolder}",
     },
     {
-        name = "Attach to Node.js",
+        name = "Attach Node",
         type = "pwa-node",
         request = "attach",
-        port = 9222,
-        skipFiles = { "<node_internals>/**" },
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        resolveSourceMapLocations = {
-            "${workspaceFolder}/**",
-            "!**/node_modules/**",
-        },
-        webRoot = "${workspaceFolder}",
+        address = "localhost",
+        port = 9229,
+        cwd = "${workspaceFolder}",
+        restart = true, -- Try to reconnect if lose connection
     },
 }
 
