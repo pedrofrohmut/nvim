@@ -100,10 +100,20 @@ cmp.setup({
 
         -- Snippets
         ["<A-s>"] = cmp.mapping(function()
-            if not cmp.visible() then
-                cmp.complete(snip_completion)
+            if luasnip.expand_or_jumpable() then
+                print("Expanding....")
+                if not luasnip.expand_or_jump() then
+                    print("Fail to expand or jump lua snip")
+                end
+            else
+                print("Not a snippet")
             end
         end),
+        -- ["<A-s>"] = cmp.mapping(function()
+        --     if not cmp.visible() then
+        --         cmp.complete(snip_completion)
+        --     end
+        -- end),
         ["<A-n>"] = cmp.mapping(function()
             local forward = 1
             if luasnip.jumpable(forward) then

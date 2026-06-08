@@ -51,13 +51,16 @@ vim.lsp.enable("emmet_ls")
 
 -- Diagnostics -----------------------------------------------------------------
 
--- vim.diagnostic.config({
---     virtual_text = false,
---     signs = true,
---     underline = true,
---     update_in_insert = false,
---     severity_sort = false,
--- })
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = false,
+})
+
+-- Disable by default
+vim.diagnostic.enable(false)
 
 -- Mappings --------------------------------------------------------------------
 
