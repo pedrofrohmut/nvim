@@ -80,7 +80,7 @@ cmp.setup({
         end),
 
         -- AI Minuet
-        ["<C-x>i"] = require("minuet").make_cmp_map(),
+        -- ["<C-x>i"] = require("minuet").make_cmp_map(),
 
         -- Buffer
         ["<C-p>"] = cmp.mapping(function()

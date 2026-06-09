@@ -5,11 +5,11 @@ dapui.setup({
     layouts = {
         {
             elements = {
-                { id = "scopes", size = 0.6 },
-                { id = "watches", size = 0.4 },
+                { id = "scopes", size = 0.65 },
+                { id = "watches", size = 0.35 },
             },
             position = "left",
-            size = 0.5,
+            size = 0.4,
         },
         {
             elements = {
@@ -363,6 +363,71 @@ dap.configurations.javascript = {
     },
 }
 
-dap.configurations.typescript = dap.configurations.javascript
-dap.configurations.javascriptreact = dap.configurations.javascript
-dap.configurations.typescriptreact = dap.configurations.javascript
+dap.configurations.typescript = {
+    {
+        name = "Launch TS-Node",
+        type = "pwa-node",
+        request = "launch",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        runtimeExecutable = "npx",
+        runtimeArgs = { "ts-node" },
+        sourceMaps = true,
+        protocol = "inspector",
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+        resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+        },
+    },
+    {
+        name = "Attach TS-Node",
+        type = "pwa-node",
+        request = "attach",
+        address = "localhost",
+        port = 9229,
+        cwd = "${workspaceFolder}",
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+        resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+        },
+        restart = true,
+    },
+    {
+        name = "Launch TSX",
+        type = "pwa-node",
+        request = "launch",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        runtimeExecutable = "npx",
+        runtimeArgs = { "tsx" },
+        sourceMaps = true,
+        protocol = "inspector",
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+        resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+        },
+    },
+    {
+        name = "Attach TSX",
+        type = "pwa-node",
+        request = "attach",
+        address = "localhost",
+        port = 9229,
+        cwd = "${workspaceFolder}",
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+        resolveSourceMapLocations = {
+            "${workspaceFolder}/**",
+            "!**/node_modules/**",
+        },
+        restart = true,
+    },
+}
+
+-- dap.configurations.typescript = dap.configurations.javascript
+-- dap.configurations.javascriptreact = dap.configurations.javascript
+-- dap.configurations.typescriptreact = dap.configurations.javascript
