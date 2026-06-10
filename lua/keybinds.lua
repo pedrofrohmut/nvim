@@ -242,8 +242,12 @@ map("n", "<leader>sh", "dl~l") -- Snake Case to Camel Case
 
 -- Terminal Mode ---------------------------------------------------------------
 
-map("n", "<leader>xx", ":terminal zsh<CR>")
-map("n", "<leader>xv", ":vs | terminal zsh<CR>")
-map("n", "<leader>xs", ":sp | terminal zsh<CR>")
+-- map("n", "<leader>xx", ":terminal zsh<CR>")
+-- map("n", "<leader>xv", ":vs | terminal zsh<CR>")
+-- map("n", "<leader>xs", ":sp | terminal zsh<CR>")
+
+map("n", "<leader>xx", ":terminal bash<CR>")
+map("n", "<leader>xv", ":vs | terminal bash<CR>")
+map("n", "<leader>xs", ":sp | terminal bash<CR>")
 
 map("t", "<C-w><C-w>", "<C-\\><C-n><C-w>w")

@@ -30,7 +30,8 @@ vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
 
 -- Vim Config
 require("vim-pack")
-require("colors")
+-- require("colors")
+require("alt-colors")
 require("autocmd")
 require("options")
 require("keybinds")
