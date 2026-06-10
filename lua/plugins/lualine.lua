@@ -1,7 +1,20 @@
 -- Lualine ---------------------------------------------------------------------
 
+local my_theme = {
+    normal = {
+        b = { fg = "#88aacc", bg = "#404040" },
+        x = { fg = "#cccccc", bg = "#282828" },
+        y = { fg = "#88aacc", bg = "#282828" },
+    },
+    inactive = {
+        c = { fg = "#989898", bg = "#282828" },
+        x = { fg = "#989898", bg = "#282828" },
+    },
+}
+
 require("lualine").setup({
     options = {
+        theme = my_theme,
         component_separators = { left = "|", right = "|" },
     },
     sections = {

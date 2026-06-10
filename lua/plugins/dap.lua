@@ -50,6 +50,12 @@ map("n", "<leader>dt", function()
         print("Debug Session Terminated")
     end
 end, { desc = "Debug: Terminate" })
+map("n", "<leader>dx", function()
+    if my_confirm("Disconnect the debug session?") then
+        dap.disconnect()
+        print("Debug session Disconnected")
+    end
+end, { desc = "Debug: Disconnect" })
 map("n", "<leader>dr", function()
     if my_confirm("Restart debug session?") then
         dap.restart()

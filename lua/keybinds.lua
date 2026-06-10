@@ -46,11 +46,12 @@ local cleanup = function()
     end
     vim.cmd("set cmdheight=1")
     vim.cmd("echo ''")
+    vim.cmd("set nohlsearch")
 end
 
-map("n", "<Esc>", cleanup)
+map("n", "<C-c>", cleanup)
 
-map("n", "<C-c>", function()
+map("n", "<Esc>", function()
     vim.cmd("echo ''")
 end)
 
