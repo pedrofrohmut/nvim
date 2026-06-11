@@ -1,15 +1,22 @@
 local highlight = vim.api.nvim_set_hl
 
 local colors = {
-    yellow = "#e5c463",
-    blue = "#557799",
-    lightgray = "#cecece",
+    -- My colors
+    yellow = "#e5c463", -- Sonokai yellow
+    red = "#f85e84", -- Sonokai red
+    blue = "#557799", -- My blue comments
+    lightgray = "#cecece", -- Emacs default
     gray = "#676767",
-    red = "#f85e84",
+
+    -- Extra colors
+    darkgray = "#242424",
+    green = "#234d3d",
+    lightgreen = "#9ece6a",
+    lightblue = "#61afef",
 }
 
 -- My Own Colorscheme
-highlight(0, "Normal", { fg = "#cecece", bg = "none" })
+highlight(0, "Normal", { fg = colors.lightgray, bg = "none" })
 highlight(0, "NormalNC", {}) -- For inactive windows
 highlight(0, "Comment", { fg = colors.blue })
 highlight(0, "Constant", {})
@@ -42,6 +49,23 @@ highlight(0, "NonText", {})
 highlight(0, "SpecialKey", {})
 highlight(0, "Directory", {})
 highlight(0, "Title", {})
+
+-- Debug
+highlight(0, "debugPC", { bg = colors.green, fg = colors.lightgray })
+
+-- Dap signs highlight groups
+highlight(0, "DapBreakpoint", { fg = colors.yellow })
+highlight(0, "DapBreakpointCondition", { fg = colors.yellow })
+highlight(0, "DapLogPoint", { fg = colors.yellow })
+highlight(0, "DapStopped", { fg = colors.yellow, bg = colors.green })
+highlight(0, "DapBreakpointRejected", { fg = colors.yellow })
+
+-- applying highlight groups
+vim.fn.sign_define("DapBreakpoint", {text="B", texthl="DapBreakpoint", linehl="", numhl=""})
+vim.fn.sign_define("DapBreakpointCondition", {text="C", texthl="DapBreakpointCondition", linehl="", numhl=""})
+vim.fn.sign_define("DapLogPoint", {text="L", texthl="DapLogPoint", linehl="", numhl=""})
+vim.fn.sign_define("DapStopped", {text="→", texthl="DapStopped", linehl="debugPC", numhl="debugPC"})
+vim.fn.sign_define("DapBreakpointRejected", {text="R", texthl="DapBreakpointRejected", linehl="", numhl=""})
 
 -- Red Highlight the Matching Scope Character () [] {} ...
 highlight(0, "MatchParen", { bold = true, fg = "#ff3333", bg = "none" })

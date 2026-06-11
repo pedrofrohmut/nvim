@@ -251,3 +251,4 @@ map("n", "<leader>xv", ":vs | terminal bash<CR>")
 map("n", "<leader>xs", ":sp | terminal bash<CR>")
 
 map("t", "<C-w><C-w>", "<C-\\><C-n><C-w>w")
+map("t", "<Esc>", "<C-\\><C-n>")
