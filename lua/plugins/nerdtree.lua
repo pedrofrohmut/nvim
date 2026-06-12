@@ -35,16 +35,23 @@ vim.g.NERDTreeMinimalUI = true
 vim.g.NERDTreeMinimalMenu = true
 vim.g.NERDTreeShowHidden = true
 
-vim.keymap.set("n", "<leader>ft", function()
+vim.keymap.set("n", "<leader>tf", function()
     vim.cmd("NERDTreeFind")
     vim.cmd("NERDTreeRefreshRoot")
 end, { desc = "NERDTree Tree Find && Refresh" })
 
-vim.keymap.set("n", "<leader>tt", function()
+vim.keymap.set("n", "<leader>to", function()
     vim.cmd("NERDTreeToggle")
     vim.cmd("NERDTreeRefreshRoot")
 end, { desc = "NERDTree Tree Toggle && Refresh" })
 
--- Refresh NERDTree on buf write and buff focus
--- vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = "NERDTreeRefreshRoot" })
+vim.keymap.set("n", "<leader>tt", function()
+    local current_win = vim.api.nvim_get_current_win()
+    vim.cmd("NERDTreeToggle")
+    vim.cmd("NERDTreeRefreshRoot")
+    if vim.api.nvim_get_current_win() ~= current_win then
+        vim.api.nvim_set_current_win(current_win)
+    end
+end, { desc = "NERDTree Tree Toggle && Refresh (no focus steal)" })
+
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "NERD_tree_tab_*", command = "NERDTreeRefreshRoot" })
