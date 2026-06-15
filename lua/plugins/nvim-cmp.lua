@@ -133,7 +133,6 @@ cmp.setup({
     }),
 })
 
--- `/` cmdline setup.
 cmp.setup.cmdline("/", {
     -- completion = {
     --     autocomplete = { 'TextChanged', 'InsertEnter' },
@@ -144,7 +143,6 @@ cmp.setup.cmdline("/", {
     },
 })
 
--- `:` cmdline setup.
 cmp.setup.cmdline(":", {
     -- completion = {
     --     autocomplete = { "TextChanged", "InsertEnter" },
