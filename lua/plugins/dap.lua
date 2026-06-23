@@ -214,7 +214,7 @@ dap.configurations.cpp = c_cpp_config
 
 -- CSharp NetCoreDbg -----------------------------------------------------------
 
-dap.adapters.coreclr = {
+dap.adapters.netcoredbg = {
     type = "executable",
     command = "netcoredbg",
     args = { "--interpreter=vscode" },
@@ -222,12 +222,13 @@ dap.adapters.coreclr = {
 
 dap.configurations.cs = {
     {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "launch - netcoredbg",
         request = "launch",
         program = function()
             return vim.fn.input("Path to dll => ", vim.fn.getcwd() .. "", "file")
         end,
+        cwd = "${workspaceFolder}",
     },
     --[[
     The file should be like this:
@@ -241,7 +242,7 @@ dap.configurations.cs = {
     ]]
     --
     {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "launch - debug.lua",
         request = "launch",
         program = function()

@@ -13,6 +13,7 @@ local colors = {
     green = "#234d3d",
     lightgreen = "#9ece6a",
     lightblue = "#61afef",
+    lighterblue = "#aaccee",
     purple = "#c299ff",
 }
 
@@ -21,22 +22,31 @@ highlight(0, "Normal", { fg = colors.lightgray, bg = "none" })
 highlight(0, "NormalNC", {}) -- For inactive windows
 highlight(0, "Comment", { fg = colors.blue })
 highlight(0, "Constant", {})
+
+-- highlight(0, "Statement", { fg = colors.red })
+-- highlight(0, "Statement", {})
+-- highlight(0, "Keyword", { fg = colors.red })
+-- highlight(0, "Keyword", {})
+-- highlight(0, "Statement", { fg = colors.yellow })
+-- highlight(0, "Keyword", { fg = colors.yellow })
+highlight(0, "Statement", { fg = colors.lighterblue })
+highlight(0, "Keyword", { fg = colors.lighterblue })
+
 -- highlight(0, "String", { fg = colors.yellow })
 highlight(0, "String", { fg = colors.lightgreen })
-highlight(0, "Character", {})
+
+highlight(0, "Character", { fg = colors.purple })
 highlight(0, "Number", { fg = colors.purple })
-highlight(0, "Boolean", {})
-highlight(0, "Float", {})
+highlight(0, "Boolean", { fg = colors.purple })
+highlight(0, "Float", { fg = colors.purple })
+
 highlight(0, "Function", {})
 highlight(0, "Identifier", {})
--- highlight(0, "Statement", { fg = colors.red })
-highlight(0, "Statement", {})
 highlight(0, "Conditional", {})
 highlight(0, "Repeat", {})
 highlight(0, "Label", {})
 highlight(0, "Operator", {})
--- highlight(0, "Keyword", { fg = colors.red })
-highlight(0, "Keyword", {})
+
 highlight(0, "Exception", {})
 highlight(0, "Type", {})
 highlight(0, "StorageClass", {})
@@ -47,12 +57,14 @@ highlight(0, "Underlined", {})
 highlight(0, "Ignore", {})
 highlight(0, "Error", {})
 highlight(0, "Todo", {})
-highlight(0, "LineNr", { fg = colors.gray })
-highlight(0, "CursorLineNr", { fg = colors.yellow })
 highlight(0, "NonText", {})
 highlight(0, "SpecialKey", {})
 highlight(0, "Directory", {})
 highlight(0, "Title", {})
+
+highlight(0, "LineNr", { fg = colors.gray })
+highlight(0, "CursorLineNr", { fg = colors.yellow })
+highlight(0, "ColorColumn", { bg = colors.darkgray })
 
 -- Debug
 highlight(0, "debugPC", { bg = colors.green, fg = colors.lightgray })
