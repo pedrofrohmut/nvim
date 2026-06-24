@@ -87,21 +87,23 @@ vim.diagnostic.enable(false)
       )
 ]]
 
+-- Using <leader>c as prefix for LSP binds
+
 -- LSP
-map("n", "<F11>", function()
+map("n", "<leader>cr", function()
     vim.cmd("lsp restart")
     vim.cmd.echo("'Lsp Restarted'")
 end, { desc = "Restart Lsp" })
-map("n", "<F12>", function()
+map("n", "<leader>ch", function()
     vim.cmd("checkhealth vim.lsp")
 end, { silent = true, desc = "Lsp Info" })
 
 -- Diagnostic
-map("n", "<leader>dd", function()
+map("n", "<leader>cd", function()
     vim.diagnostic.enable(false)
     vim.cmd.echo("'Diagnostics Disabled'")
 end, { desc = "Disable Diagnostics" })
-map("n", "<leader>de", function()
+map("n", "<leader>ce", function()
     vim.diagnostic.enable(true)
     vim.cmd.echo("'Diagnostics Enabled'")
 end, { desc = "Enable Diagnostics" })

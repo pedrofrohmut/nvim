@@ -38,7 +38,7 @@ local my_confirm = function(text)
 end
 
 -- Start / Restart / Stop
-map("n", "<F5>", function()
+map("n", "<F8>", function()
     if dap.session() == nil then
         print("Debug Session Starting...")
     end
@@ -72,13 +72,13 @@ map("n", "<F11>", function()
     dap.step_into()
     vim.api.nvim_feedkeys("zz", "n", false)
 end, { desc = "Debug: Step Into" })
-map("n", "<S-F11>", function()
+map("n", "<F12>", function()
     dap.step_out()
     vim.api.nvim_feedkeys("zz", "n", false)
 end, { desc = "Debug: Step Out" })
 
 -- Breakpoints
-map("n", "<F9>", function()
+map("n", "<F7>", function()
     dap.toggle_breakpoint()
     print("Breakpoint toggled")
 end, { desc = "Debug: Toggle Breakpoint" })
