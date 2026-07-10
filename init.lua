@@ -6,6 +6,7 @@ require("autocmd")
 require("options")
 require("keybinds")
 require("my-custom")
+require("utils")
 
 -- # Plugins Config ------------------------------------------------------------
 require("plugins/mason")
