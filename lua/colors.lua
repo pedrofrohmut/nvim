@@ -7,7 +7,7 @@ local main_colorscheme = 1
 local tokyo_colorscheme = 2
 local quiet_colorscheme = 3
 
-local current_colorscheme = quiet_colorscheme
+local current_colorscheme = main_colorscheme
 
 if current_colorscheme == tokyo_colorscheme then
     require("tokyonight").setup({

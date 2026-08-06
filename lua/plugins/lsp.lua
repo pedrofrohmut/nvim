@@ -35,6 +35,7 @@ vim.lsp.config("cssls", {})
 vim.lsp.config("html", {})
 vim.lsp.config("emmet_ls", {})
 vim.lsp.config("clojure_lsp", {})
+vim.lsp.config("ocamllsp", {})
 
 vim.lsp.config("*", {
     capabilities = capabilities,
@@ -50,6 +51,7 @@ vim.lsp.enable("cssls")
 vim.lsp.enable("html")
 vim.lsp.enable("emmet_ls")
 vim.lsp.enable("clojure_lsp")
+vim.lsp.enable("ocamllsp")
 
 -- Diagnostics -----------------------------------------------------------------
 

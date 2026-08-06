@@ -30,7 +30,12 @@ highlight(0, "Constant", {})
 -- highlight(0, "Statement", { fg = colors.yellow })
 -- highlight(0, "Keyword", { fg = colors.yellow })
 highlight(0, "Statement", { fg = colors.lighterblue })
+highlight(0, "Conditional", { fg = colors.lighterblue })
+highlight(0, "Repeat", { fg = colors.lighterblue })
+highlight(0, "Label", { fg = colors.lighterblue })
+highlight(0, "Operator", { fg = colors.lighterblue })
 highlight(0, "Keyword", { fg = colors.lighterblue })
+highlight(0, "Exception", { fg = colors.lighterblue })
 
 -- highlight(0, "String", { fg = colors.yellow })
 highlight(0, "String", { fg = colors.lightgreen })
@@ -106,14 +111,14 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 })
 
 -- Highlight Trailing White Spaces
-highlight(0, "TrailingWhitespace", { fg = "#000000", bg = "#666666" })
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    pattern = "*",
-    callback = function()
-        vim.fn.matchadd("TrailingWhitespace", "\\s\\+$")
-    end,
-})
+-- highlight(0, "TrailingWhitespace", { fg = "#000000", bg = "#666666" })
+--
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--     pattern = "*",
+--     callback = function()
+--         vim.fn.matchadd("TrailingWhitespace", "\\s\\+$")
+--     end,
+-- })
 
 -- Vim JSX Pretty --------------------------------------------------------------
 
