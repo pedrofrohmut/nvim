@@ -438,3 +438,94 @@ dap.configurations.typescript = {
 -- dap.configurations.typescript = dap.configurations.javascript
 -- dap.configurations.javascriptreact = dap.configurations.javascript
 -- dap.configurations.typescriptreact = dap.configurations.javascript
+
+-- OCaml -----------------------------------------------------------------------
+
+dap.adapters.ocamlearlybird = {
+    type = "executable",
+    command = "ocamlearlybird",
+    args = { "debug" },
+}
+
+dap.configurations.ocaml = {
+    -- {
+    --     type = "ocamlearlybird",
+    --     request = "launch",
+    --     name = "Launch",
+    --     program = "${workspaceFolder}/_build/default/bin/main.bc",
+    -- },
+    {
+        type = "ocamlearlybird",
+        request = "launch",
+        name = "Launch - debug.lua",
+        program = function()
+            local config_path = vim.fn.getcwd() .. "/debug.lua"
+
+            if vim.fn.filereadable(config_path) ~= 1 then
+                vim.notify("No debug.lua found in the vim cwd")
+                return nil
+            end
+
+            local config = dofile(config_path)
+
+            if config.dll_path == nil then
+                vim.notify("No 'dll_path' found in debug.lua")
+                return nil
+            end
+
+            local full_dll_path = vim.fn.getcwd() .. "/" .. config.dll_path
+            vim.notify("Debug started for: " .. full_dll_path)
+
+            return full_dll_path
+        end,
+        cwd = function()
+            local config = dofile(vim.fn.getcwd() .. "/debug.lua")
+
+            if config.project_root == nil then
+                vim.notify("No 'project_root' found in debug.lua")
+                return nil
+            end
+
+            return vim.fn.getcwd() .. "/" .. config.project_root
+        end,
+    },
+    {
+        type = "ocamlearlybird",
+        request = "launch",
+        name = "Launch + Args - debug.lua",
+        program = function()
+            local config_path = vim.fn.getcwd() .. "/debug.lua"
+
+            if vim.fn.filereadable(config_path) ~= 1 then
+                vim.notify("No debug.lua found in the vim cwd")
+                return nil
+            end
+
+            local config = dofile(config_path)
+
+            if config.dll_path == nil then
+                vim.notify("No 'dll_path' found in debug.lua")
+                return nil
+            end
+
+            local full_dll_path = vim.fn.getcwd() .. "/" .. config.dll_path
+            vim.notify("Debug started for: " .. full_dll_path)
+
+            return full_dll_path
+        end,
+        cwd = function()
+            local config = dofile(vim.fn.getcwd() .. "/debug.lua")
+
+            if config.project_root == nil then
+                vim.notify("No 'project_root' found in debug.lua")
+                return nil
+            end
+
+            return vim.fn.getcwd() .. "/" .. config.project_root
+        end,
+        args = function()
+            local input = vim.fn.input("Enter your arguments: ")
+            return { input }
+        end,
+    },
+}

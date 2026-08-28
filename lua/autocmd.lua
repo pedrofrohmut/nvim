@@ -14,7 +14,7 @@ autocmd("FileType", {
 -- Set 2 for exceptions
 autocmd("FileType", {
     group = "FileTypeGroup",
-    pattern = { "html", "javascriptreact", "typescriptreact", "javascript", "typescript" },
+    pattern = { "html", "javascriptreact", "typescriptreact", "javascript", "typescript", "ocaml" },
     callback = function()
         vim.cmd("setlocal shiftwidth=2")
         vim.cmd("setlocal softtabstop=2")

@@ -28,6 +28,6 @@ require("plugins/dap")
 require("plugins/nvim-repl")
 
 -- # Colors --------------------------------------------------------------------
-require("colors")
--- require("alt-colors")
+-- require("colors")
+require("alt-colors")
 -- require("simple-colors")
