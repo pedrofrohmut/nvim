@@ -6,7 +6,7 @@ local themes = require("telescope.themes")
 require("telescope").setup({
     defaults = {
         file_ignore_patterns = {
-            "bin/",
+            -- "bin/",
             "obj/",
             "%.o",
             "%.out",

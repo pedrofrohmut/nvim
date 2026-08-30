@@ -1,7 +1,7 @@
 local ignores = {
     "node_modules",
     "obj$",
-    "bin$",
+    -- "bin$",
     "target",
     "__pycache__",
     ".git",
