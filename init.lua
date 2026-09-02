@@ -7,14 +7,39 @@ vim.call("plug#begin")
 Plug("nvim-lua/plenary.nvim")
 Plug("nvim-telescope/telescope-fzf-native.nvim", { ["do"] = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install" })
 Plug("nvim-telescope/telescope.nvim")
-Plug("preservim/nerdtree")
-Plug("justinmk/vim-sneak")
-Plug("mattn/emmet-vim")
-Plug("nvim-lualine/lualine.nvim")
-Plug("tpope/vim-surround")
-Plug("tpope/vim-repeat")
-Plug("tommcdo/vim-lion")
-Plug("sainnhe/sonokai")
+Plug("preservim/nerdtree") -- Tree file explorer
+Plug("justinmk/vim-sneak") -- Text Jumping Enhancement
+Plug("mattn/emmet-vim") -- Easy Tags
+Plug("nvim-lualine/lualine.nvim") -- Status line
+Plug("tpope/vim-surround") -- Change, add and remove surround symbols
+Plug("tpope/vim-repeat") -- Dot works for more stuff
+Plug("tommcdo/vim-lion") -- Vertical Aligner
+Plug("sainnhe/sonokai") -- Main colorscheme
+Plug("MaxMEllon/vim-jsx-pretty") -- Indentation for react
+Plug("stevearc/conform.nvim") -- Conform: Code Formatter
+Plug("mfussenegger/nvim-lint") -- Nvim-Lint
+Plug("hedyhli/outline.nvim") -- Symbols outline
+Plug("nvim-treesitter/nvim-treesitter") -- Treesitter
+
+-- Lua Snip
+Plug("L3MON4D3/LuaSnip")
+Plug("saadparwaiz1/cmp_luasnip")
+Plug("rafamadriz/friendly-snippets")
+
+-- CMP
+Plug("hrsh7th/nvim-cmp")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/cmp-path")
+
+-- LSP
+Plug("mason-org/mason.nvim")
+Plug("neovim/nvim-lspconfig")
+
+-- Debug
+Plug("mfussenegger/nvim-dap") -- DAP impl for neovim
+Plug("nvim-neotest/nvim-nio") -- Required for DapUI
+Plug("rcarriga/nvim-dap-ui") -- UI for debugging
 
 vim.call("plug#end")
 
@@ -37,10 +62,16 @@ require("plugins/sneak")
 require("plugins/emmet")
 require("plugins/lualine")
 require("plugins/vim-surround")
+require("plugins/conform")
+require("plugins/lint")
+require("plugins/treesitter")
 
 -- # LSP ----------------------------------------------------------------------
 
--- TODO: Add nvim-lsp, mason, cmp, luasnip, linter, formatter, outline, jsx-pretty
+require("plugins/nvim-cmp")
+require("plugins/mason")
+require("plugins/lsp")
+require("plugins/symbols-outline")
 
 -- # Debug --------------------------------------------------------------------
 
