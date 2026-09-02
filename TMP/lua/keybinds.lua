@@ -61,6 +61,10 @@ map({ "i", "c" }, "<C-h>", "<BS>")
 
 -- Insert lines in Normal Mode
 map("n", "<Enter>", "i<Enter><Esc>")
+map("n", "<C-Space>", "i<Space><Esc>")
+
+-- open new line to type between character like ()
+-- map("i", "<C-j>", "<Enter><Esc>ko")
 
 -- Insert ; at line end (Lazy nerd)
 map("n", "<leader>;", "mzA;<Esc>`z", { desc = "Insert ';' at line end without moving the cursor position" })
@@ -104,7 +108,30 @@ map("n", "gcl", function()
     end
 end)
 
--- Recent buffer
+-- MyPlugin: Closing cheracter -------------------------------------------------
+
+-- -- Closing character with <Enter> / <CR>
+-- map("i", "(<CR>", "(<CR>)<Esc>ko")
+-- map("i", "[<CR>", "[<CR>]<Esc>ko")
+-- map("i", "[[<CR>", "[[<CR>]]<Esc>ko")
+-- map("i", "{<CR>", "{<CR>}<Esc>ko")
+-- map("i", "({<CR>", "({<CR>})<Esc>ko")
+-- map("i", "`<CR>", "`<CR>`<Esc>ko<Tab>")
+-- map("i", "(`<CR>", "(``)<Esc>hi<CR><Esc>ko<Tab>")
+--
+-- -- Add spaces inside closing character (lacking in autopairs plugin)
+-- map("i", "( ", "(  )<Esc>hi")
+-- map("i", "[ ", "[  ]<Esc>hi")
+-- map("i", "[[ ", "[[  ]]<Esc>hi")
+-- map("i", "{ ", "{  }<Esc>hi")
+-- map("i", "({ ", "({  })<Esc>hi")
+
+-- Buffers ---------------------------------------------------------------------
+
+map("n", "[b", vim.cmd.bprevious)
+map("n", "]b", vim.cmd.bnext)
+map("n", "<leader>bb", ":buffers<CR>:b ")
+map("n", "<leader>ba", ":%bd")
 map("n", "gb", "<cmd>b#<CR>")
 
 -- Tabs ------------------------------------------------------------------------
@@ -119,6 +146,10 @@ map("n", "<leader>to", ":tabonly<CR>", { silent = true })
 -- Move Tabs - Left/Right
 map("n", "<leader>th", ":-tabmove<CR>", { silent = true })
 map("n", "<leader>tl", ":+tabmove<CR>", { silent = true })
+
+-- Go To - Next/Prev
+map("n", "<C-n>", ":tabnext<CR>", { silent = true })
+map("n", "<C-p>", ":tabprevious<CR>", { silent = true })
 
 -- Windows ---------------------------------------------------------------------
 
@@ -140,8 +171,13 @@ end, { desc = "Close other tabs and other windows" })
 
 -- Jumping/Scrolling -----------------------------------------------------------
 
+map({ "n", "v" }, "M", "%") -- Easier to press %
 map({ "n", "v" }, "H", "^") -- First non-blank character
 map({ "n", "v" }, "L", "g_") -- Last non-blank character
+
+-- Emacs inspired maps
+-- map({ "n", "v" }, "<A-a>", "k^") -- First character of previous line
+-- map({ "n", "v" }, "<A-e>", "2$") -- Last character of next line
 
 -- Scrolling Vertical
 map({ "n", "v" }, "<C-k>", "12<C-y>")
@@ -152,7 +188,7 @@ map({ "n", "v" }, "<C-d>", "28<C-e>M")
 map({ "n", "v" }, "<C-u>", "28<C-y>M")
 
 -- Scrolling Vertical (InsertMode)
-map("i", "<C-x><C-m>", "<C-o>zz")
+map("i", "<C-b>", "<C-o>zz")
 map("i", "<C-x><C-k>", "<C-o>12<C-y>")
 map("i", "<C-x><C-j>", "<C-o>12<C-e>")
 
@@ -178,6 +214,9 @@ map(
     'y<Esc>:%s/<C-r>"/',
     { desc = "Find and replace entire file that auto capture the selected text" }
 )
+
+-- Sort
+-- map("v", "<leader>sp", ":sort<Enter>", { desc = "Call sorting command on selected text" })
 
 -- Remove trailing spaces
 map("n", "<leader>st", function()

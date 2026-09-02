@@ -1,33 +1,47 @@
-vim.g.mapleader = " " -- Why this is the first line? Avoid weird bugs
+-- Vim Plug to install packages
 
--- # Vim Config ----------------------------------------------------------------
-require("vim-pack")
+local Plug = vim.fn["plug#"]
+
+vim.call("plug#begin")
+
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-telescope/telescope-fzf-native.nvim", { ["do"] = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install" })
+Plug("nvim-telescope/telescope.nvim")
+Plug("preservim/nerdtree")
+Plug("justinmk/vim-sneak")
+Plug("mattn/emmet-vim")
+Plug("nvim-lualine/lualine.nvim")
+Plug("tpope/vim-surround")
+Plug("tpope/vim-repeat")
+Plug("tommcdo/vim-lion")
+Plug("sainnhe/sonokai")
+
+vim.call("plug#end")
+
+vim.g.mapleader = " "
+
+-- # Vim -----------------------------------------------------------------------
+
 require("autocmd")
 require("options")
 require("keybinds")
 require("my-custom")
 require("utils")
+require("colors")
 
--- # Plugins Config ------------------------------------------------------------
-require("plugins/mason")
-require("plugins/lsp")
-require("plugins/vim-surround")
-require("plugins/sneak")
-require("plugins/treesitter")
-require("plugins/telescope")
-require("plugins/lualine")
-require("plugins/nvim-cmp")
-require("plugins/emmet-vim")
-require("plugins/conform")
-require("plugins/lint")
-require("plugins/symbols-outline")
+-- # Plugins -------------------------------------------------------------------
+
 require("plugins/nerdtree")
-require("plugins/dap")
--- require("plugins/minuet-ai")
--- require("plugins/git-signs")
-require("plugins/nvim-repl")
+require("plugins/telescope")
+require("plugins/sneak")
+require("plugins/emmet")
+require("plugins/lualine")
+require("plugins/vim-surround")
 
--- # Colors --------------------------------------------------------------------
--- require("colors")
-require("alt-colors")
--- require("simple-colors")
+-- # LSP ----------------------------------------------------------------------
+
+-- TODO: Add nvim-lsp, mason, cmp, luasnip, linter, formatter, outline, jsx-pretty
+
+-- # Debug --------------------------------------------------------------------
+
+-- TODO: Add dap and dap-ui

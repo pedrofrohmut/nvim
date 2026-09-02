@@ -3,49 +3,12 @@ local highlight = vim.api.nvim_set_hl
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
-local main_colorscheme = 1
-local tokyo_colorscheme = 2
-local quiet_colorscheme = 3
+-- This configuration options should be placed before `colorscheme sonokai`.
+vim.g.sonokai_style = "shusia"
+vim.g.sonokai_better_performance = 1
+vim.g.sonokai_transparent_background = 2
 
-local current_colorscheme = main_colorscheme
-
-if current_colorscheme == tokyo_colorscheme then
-    require("tokyonight").setup({
-        transparent = true,
-
-        -- Choose your style: "storm", "moon", "night", or "day"
-        style = "night",
-
-        styles = {
-            sidebars = "transparent",
-            floats = "transparent",
-        },
-
-        dim_inactive = false,
-    })
-
-    vim.cmd.colorscheme("tokyonight")
-elseif current_colorscheme == quiet_colorscheme then
-    vim.cmd.colorscheme("quiet")
-
-    -- Setup my colors
-    highlight(0, "Comment", { fg = "#557799" })
-    highlight(0, "String", { fg = "#e5c463" })
-    highlight(0, "Keyword", { fg = "#f85e84" })
-    highlight(0, "Statement", { fg = "#f85e84" })
-
-    -- Transparent background
-    highlight(0, "Normal", { bg = "none" })
-    highlight(0, "NormalFloat", { bg = "none" })
-    highlight(0, "SignColumn", { bg = "none" })
-else
-    -- This configuration options should be placed before `colorscheme sonokai`.
-    vim.g.sonokai_style = "shusia"
-    vim.g.sonokai_better_performance = 1
-    vim.g.sonokai_transparent_background = 2
-
-    vim.cmd.colorscheme("sonokai")
-end
+vim.cmd.colorscheme("sonokai")
 
 -- Red Highlight the Matching Scope Character () [] {} ...
 highlight(0, "MatchParen", { bold = true, fg = "#ff3333", bg = "none" })

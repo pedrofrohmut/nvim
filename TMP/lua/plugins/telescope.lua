@@ -80,6 +80,7 @@ end
 
 map("n", "<leader>fs", grep_search, { desc = "Telescope Grep" })
 
+-- map("n", "<C-f>", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
 map("n", "<leader>fl", builtin.current_buffer_fuzzy_find, { desc = "Telescope Current Buffer Fuzzy Find" })
 
 local no_preview_dropdown = themes.get_dropdown({
@@ -96,3 +97,6 @@ map("n", "<C-b>", function()
 end, { desc = "Telescope Buffers (No Preview)" })
 
 map("n", "<leader>fd", builtin.diagnostics, { desc = "Telescope Find Diagnostics" })
+-- map("n", "<leader>fw", builtin.lsp_dynamic_workspace_symbols, { desc = "Telescope Dynamic Workspace Symbols" })
+-- map("n", "<leader>sd", builtin.lsp_document_symbols, { desc = "Telescope Document Symbols" })
+-- map("n", "<leader>sw", builtin.lsp_workspace_symbols, { desc = "Telescope Workspace Symbols" })

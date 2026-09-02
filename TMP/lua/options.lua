@@ -24,6 +24,7 @@ opt.showmode = false
 opt.number = true
 opt.relativenumber = true
 opt.wildmenu = true
+opt.termguicolors = true
 
 -- Behavior
 opt.splitright = true
@@ -32,6 +33,8 @@ opt.cursorline = true
 opt.mouse = "a"
 opt.updatetime = 250
 opt.wrap = false
+--opt.sidescrolloff  = 8
+--opt.textwidth      = 100
 
 -- Files
 opt.backup = false
@@ -49,3 +52,4 @@ opt.wildmenu = true
 vim.g.netrw_winsize = 20
 vim.g.netrw_liststyle = 3 -- 3 for Tree style
 vim.g.netrw_banner = 0 -- hide the banner
+-- vim.g.netrw_browse_split = 4 -- opened files with <CR> open like preview
