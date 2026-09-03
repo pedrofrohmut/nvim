@@ -1,17 +1,15 @@
+-- # Colors --------------------------------------------------------------------
+
 local highlight = vim.api.nvim_set_hl
 
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
--- This configuration options should be placed before `colorscheme sonokai`.
-vim.g.sonokai_style = "shusia"
-vim.g.sonokai_better_performance = 1
-vim.g.sonokai_transparent_background = 2
-
-vim.cmd.colorscheme("sonokai")
-
 -- Red Highlight the Matching Scope Character () [] {} ...
 highlight(0, "MatchParen", { bold = true, fg = "#ff3333", bg = "none" })
+
+highlight(0, "ColorColumn", { bg = "#242424"})
+highlight(0, "CursorLine", { bg = "#242424"})
 
 -- Blue and Gray for Tabline (Overriding colorscheme ones)
 highlight(0, "TablineSel", { fg = "#88ffff", bg = "#323232" })
@@ -41,7 +39,3 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
         vim.fn.matchadd("TrailingWhitespace", "\\s\\+$")
     end,
 })
-
--- Vim JSX Pretty --------------------------------------------------------------
-
-vim.g.vim_jsx_pretty_enable_jsx_highlight = 0

@@ -30,22 +30,22 @@ autocmd("FileType", {
     end,
 })
 
--- CursorLine Group
-augroup("CursorLine", { clear = true })
-
--- Set cursorline on enter
-autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
-    group = "CursorLine",
-    pattern = "*",
-    command = "setlocal cursorline",
-})
-
--- Set nocursorline on leave
-autocmd("WinLeave", {
-    group = "CursorLine",
-    pattern = "*",
-    command = "setlocal nocursorline",
-})
+-- -- CursorLine Group
+-- augroup("CursorLine", { clear = true })
+--
+-- -- Set cursorline on enter
+-- autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+--     group = "CursorLine",
+--     pattern = "*",
+--     command = "setlocal cursorline",
+-- })
+--
+-- -- Set nocursorline on leave
+-- autocmd("WinLeave", {
+--     group = "CursorLine",
+--     pattern = "*",
+--     command = "setlocal nocursorline",
+-- })
 
 -- Remove Trailing White Spaces onSave (And dont show errors)
 autocmd("BufWritePre", { pattern = "*", command = ":%s/\\s\\+$//e" })
