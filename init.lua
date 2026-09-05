@@ -82,7 +82,7 @@ require("plugins/symbols-outline")
 
 -- # Debug --------------------------------------------------------------------
 
--- TODO: Add dap and dap-ui
+require("plugins/dap")
 
 -- Color Scheme ----------------------------------------------------------------
 
